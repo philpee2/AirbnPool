@@ -8,12 +8,18 @@ export default function App({ children }) {
   return (
     <div className={css(styles.wrapper)}>
       <Header />
-      {children}
+      <div className={css(styles.container)}>
+        {children}
+      </div>
     </div>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    display: 'flex',
+    paddingTop: 48,
+  },
   wrapper: {
     position: 'relative',
     display: 'flex',

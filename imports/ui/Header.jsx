@@ -17,8 +17,9 @@ const styles = StyleSheet.create({
   container: {
     position: 'relative',
     display: 'flex',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
     width: '100%',
-    padding: 12,
+    padding: 18,
+    borderBottom: '1px solid #dce0e0',
   },
 });
