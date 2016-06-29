@@ -3,6 +3,8 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { StyleSheet, css } from 'aphrodite';
 
 import { Groups } from '../api/groups/groups';
+
+import ChatMessage from './ChatMessage';
 import ListingCard from './ListingCard';
 import Composer from './Composer';
 
@@ -39,25 +41,24 @@ class ChatContainer extends Component {
     const { messages, groupId, createMessage, isLoading } = this.props;
     const { newMessageText } = this.state;
     return (
-      <div className={css(styles.container)}>
-        {messages.map(message => (
-          <div key={message._id}>
-            <div className="bubble">
-              {message.text}
-            </div>
-            <div className="userImg">
-              photo
-            </div>
+      <div className={css(styles.wrapper)}>
+        <div className={css(styles.container)}>
+          <div className={css(styles.messages)}>
+            {messages.map(message => (
+              <ChatMessage key={message._id} message={message} />
+            ))}
           </div>
-        ))}
 
-        <Composer
-          groupId={groupId}
-          connected={!isLoading}
-          disabled={isLoading}
-          loading={isLoading}
-          sendMessage={this._createMessage}
-        />
+        </div>
+        <div className={css(styles.footer)}>
+          <Composer
+            groupId={groupId}
+            connected={!isLoading}
+            disabled={isLoading}
+            loading={isLoading}
+            sendMessage={this._createMessage}
+          />
+        </div>
       </div>
     );
   }
@@ -66,8 +67,22 @@ class ChatContainer extends Component {
 const styles = StyleSheet.create({
   container: {
     position: 'relative',
+    height: '100%',
+    overflow: 'scroll',
+  },
+  footer: {
+    position: 'absolute',
+    bottom: 0,
+  },
+  messages: {
+    position: 'relative',
     display: 'flex',
     flexDirection: 'column',
+    justifyContent: 'flex-end',
+  },
+  wrapper: {
+    position: 'relative',
+    height: 412,
     padding: '12px',
     border: '1px solid #edefed',
   },

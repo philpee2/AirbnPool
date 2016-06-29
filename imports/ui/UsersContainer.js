@@ -2,14 +2,14 @@ import React, { PropTypes } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 const propTypes = {
-  listings: PropTypes.array.isRequired,
+  users: PropTypes.array.isRequired,
 };
 
 export default function UsersContainer({ users }) {
   return (
     <div className={css(styles.container)}>
       {users.map(user => {
-        return <div>{user}</div>;
+        return <div key={user}>{user}</div>;
       })}
     </div>
   );

@@ -2,8 +2,7 @@
 .bubble {
   border: 1px solid #ececec;
   border-radius: 5px;
-  padding: 15px;
-  margin: 20px;
+  padding: 8px;
   background: #ececec;
   width: 80%;
   display: inline-block;
