@@ -3,6 +3,7 @@ import { Messages } from '../messages/messages';
 import { UserGroups } from '../userGroups/userGroups';
 import { ListingGroups } from '../listingGroups/listingGroups';
 import { Listings } from '../listings/listings';
+import { Votes } from '../votes/votes';
 
 export const Groups = new Mongo.Collection('groups');
 
@@ -27,5 +28,13 @@ Groups.helpers({
   listings() {
     const listingIds = this.listingGroups().map(item => item.listingId);
     return Listings.find({ _id: { $in: listingIds } });
+  },
+
+  allVotes() {
+    return Votes.find({ groupId: this._id });
+  },
+
+  votesForUser(userId) {
+    return Votes.find({ groupId: this._id, userId });
   },
 });

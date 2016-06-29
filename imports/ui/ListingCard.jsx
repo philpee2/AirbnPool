@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { StyleSheet, css } from 'aphrodite';
+import { CAN_VOTE, DID_VOTE, CANNOT_VOTE } from './constants/voting_status_constants';
 
 const propTypes = {
   listing: PropTypes.shape({
@@ -7,9 +8,35 @@ const propTypes = {
     location: PropTypes.string.isRequired,
   }),
   onVote: PropTypes.func.isRequired,
+  numVotes: PropTypes.number.isRequired,
+  votingStatus: PropTypes.oneOf([CAN_VOTE, DID_VOTE, CANNOT_VOTE]).isRequired,
+  showVotes: PropTypes.bool.isRequired,
 };
 
-export default function ListingCard({ listing, onVote }) {
+function VoteButton({ status, onClick }) {
+  switch (status) {
+    case CAN_VOTE:
+      return (
+        <button className={css(styles.voteButton)} onClick={onClick}>
+          Vote
+        </button>
+      );
+    case CANNOT_VOTE:
+      return (
+        <button className={css(styles.disabledVoteButton)} disabled>
+          Vote
+        </button>
+      );
+    case DID_VOTE:
+      return (
+        <div className={css(styles.votedIcon)}>
+          Checkmark
+        </div>
+      );
+  }
+}
+
+export default function ListingCard({ listing, onVote, votingStatus, numVotes, showVotes }) {
   const title = 'Boutique Retreat Bedroom';
   const reviewsCount = 5;
   return (
@@ -49,7 +76,10 @@ export default function ListingCard({ listing, onVote }) {
             />
           </a>
         </div>
-        <button className={css(styles.voteButton)} onClick={onVote}>Vote</button>
+        <VoteButton status={votingStatus} onClick={onVote} />
+        {numVotes > 0 && showVotes && (
+          <div className={css(styles.numVotes)}>{numVotes} Votes</div>
+        )}
       </div>
     </div>
   );
@@ -136,7 +166,17 @@ const styles = StyleSheet.create({
   voteButton: {
     backgroundColor: 'red',
     color: 'white',
-  }
+  },
+  disabledVoteButton: {
+    color: 'white',
+    backgroundColor: 'grey',
+  },
+  votedIcon: {
+    backgroundColor: 'red',
+  },
+  numVotes: {
+
+  },
 });
 
 ListingCard.propTypes = propTypes;

@@ -27,6 +27,10 @@ if (Meteor.isServer) {
         find(group) {
           return group.listings();
         },
+      }, {
+        find(group) {
+          return group.allVotes();
+        }
       }],
     };
   });
