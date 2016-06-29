@@ -43,8 +43,8 @@ class ChatContainer extends Component {
     return (
       <div className={css(styles.container)}>
         {messages.map(message => (
-          <div>
-            <div key={message._id} className="bubble">
+          <div key={message._id}>
+            <div className="bubble">
               {message.text}
             </div>
             <div className="userImg">
