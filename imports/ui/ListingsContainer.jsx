@@ -53,10 +53,10 @@ export default function ListingsContainer({
           <ListingCard
             key={listing._id}
             listing={listing}
-            onVote={() => onListingVote(listing._id)}
             numVotes={getListingVotesValue(allVotes, listing._id)}
-            votingStatus={getVotingStatus(listing._id, currentUserVotes)}
+            onVote={() => onListingVote(listing._id)}
             showVotes={userHasVoted}
+            votingStatus={getVotingStatus(listing._id, currentUserVotes)}
           />
         ))}
       </div>

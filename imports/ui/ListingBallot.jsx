@@ -19,19 +19,24 @@ function VoteButton({ status, onClick }) {
     case DID_VOTE:
       return (
         <div className={css(styles.checkmark)}>
-          &#9745
+          &#9745;
         </div>
       );
   }
 }
 
-export default function ListingBallot({ numVotes, onVote, showVotes, votingStatus }) {
+export default function ListingBallot({
+  numVotes,
+  onVote,
+  showVotes,
+  votingStatus,
+}) {
   return (
     <div className={css(styles.container)}>
       <VoteButton status={votingStatus} onClick={onVote} />
       {numVotes > 0 && showVotes && (
         <div className={css(styles.numVotes)}>
-          {`${numVotes} Votes`}
+          {`${numVotes} Vote(s)`}
         </div>
       )}
     </div>
@@ -54,13 +59,17 @@ const styles = StyleSheet.create({
     transition: 'opacity 0.3s',
   },
   checkmark: {
-    width: 48,
+    padding: '1px 1px 2px 4px',
+    fontFamily: 'Circular Bold',
+    fontSize: 18,
     color: '#ffffff',
-    backgroundColor: 'red',
+    backgroundColor: '#ff5a5f',
   },
   container: {
     display: 'flex',
     justifyContent: 'space-between',
+    position: 'relative',
+    paddingTop: 6,
   },
   disabledVoteButton: {
     fontFamily: 'Circular Bold',
