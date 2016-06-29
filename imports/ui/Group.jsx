@@ -16,13 +16,16 @@ const fakeListings = [{
 }];
 
 const propTypes = {
-  groupId: PropTypes.string.isRequired,
+  params: PropTypes.shape({
+    groupId: PropTypes.string.isRequired,
+  }).isRequired,
   messages: PropTypes.arrayOf(PropTypes.object).isRequired,
   isLoading: PropTypes.bool,
   createMessage: PropTypes.func.isRequired,
 };
 
-function Group({ groupId , messages, isLoading, createMessage }) {
+function Group({ params , messages, isLoading, createMessage }) {
+  const { groupId } = params;
   return (
     <div className={css(styles.page)}>
       <div className={css(styles.row)}>
@@ -71,7 +74,7 @@ const styles = StyleSheet.create({
 });
 
 export default createContainer((props) => {
-  const groupId = props.groupId;
+  const groupId = props.params.groupId;
   const groupHandle = Meteor.subscribe('group', groupId);
   const isLoading = !groupHandle.ready();
   const group = Groups.findOne(groupId);
