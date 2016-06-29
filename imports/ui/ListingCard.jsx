@@ -22,20 +22,20 @@ export default function ListingCard(props) {
           src="https://a2.muscache.com/im/pictures/97759166/422a22ef_original.jpg?aki_policy=x_medium"
         />
         <div className={css(styles.priceContainer)}>
-          <div className={css(styles.price)}>
-            {'$100 -'}
-          </div>
-          <div className={css(styles.price)}>
-            Instant
-          </div>
+          <h3 className={css(styles.price)}>
+            {'$100'}
+          </h3>
+          <h3 className={css(styles.price)}>
+            {': IB'}
+          </h3>
         </div>
       </div>
 
       <div className={css(styles.bottomRow)}>
         <div className={css(styles.textContainer)}>
-          <div className={css(styles.titleContainer)}>
+          <h4 className={css(styles.title)}>
             {title}
-          </div>
+          </h4>
           <div>
             <span>Entire home/apt</span>
             <span className={css(styles.middot)}>·</span>
@@ -60,8 +60,8 @@ const styles = StyleSheet.create({
   container: {
     position: 'relative',
     flex: 1,
-    height: '100%',
-    padding: '0px 12px',
+    marginBottom: 12,
+    border: '1px solid #dce0e0',
   },
   imageWrapper: {
     position: 'relative',
@@ -95,25 +95,26 @@ const styles = StyleSheet.create({
     left: 0,
     background: '#bbbbbb',
     zIndex: 1,
-    display: 'inline-block',
-    padding: 6,
-    bottom: 6,
+    display: 'flex',
+    alignItems: 'center',
+    padding: 8,
+    bottom: 12,
     backgroundColor: 'rgba(45,45,45,0.9)',
     color: '#ffffff',
   },
   price: {
     display: 'inline-block',
+    color: '#ffffff',
   },
   bottomRow: {
     backgroundColor: '#ffffff',
     padding: 2 * 6,
-    color: '#bbbbbb',
   },
   textContainer: {
     width: '80%',
     display: 'inline-block',
   },
-  titleContainer: {
+  title: {
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis',

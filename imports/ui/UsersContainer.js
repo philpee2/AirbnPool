@@ -19,9 +19,8 @@ const styles = StyleSheet.create({
   container: {
     position: 'relative',
     display: 'flex',
-    flexDirection: 'column',
     padding: '12px',
-    border: '1px solid #edefed',
+    border: '1px solid #dce0e0',
   },
 });
 

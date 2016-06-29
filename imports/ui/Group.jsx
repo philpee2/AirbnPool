@@ -34,7 +34,7 @@ function Group({ params , users, messages, isLoading, createMessage }) {
         <h2>Choose a place, you'll stay at whichever has the most votes</h2>
       </div>
       <div className={css(styles.row)}>
-        <ListingsContainer listings={fakeListings} />
+        <UsersContainer users={users} />
       </div>
       <div className={css(styles.row)}>
         <div className={css(styles.col)}>
@@ -44,8 +44,8 @@ function Group({ params , users, messages, isLoading, createMessage }) {
             isLoading={isLoading}
           />
         </div>
-        <div className={css(styles.col)}>
-          <UsersContainer users={users} />
+        <div className={css(styles.col, styles.padding)}>
+          <ListingsContainer listings={fakeListings} />
         </div>
       </div>
     </div>
@@ -60,8 +60,10 @@ const styles = StyleSheet.create({
     display: 'inline-block',
     flex: 1,
     width: '50%',
-    padding: '0px 12px',
     boxSizing: 'border-box',
+  },
+  padding: {
+    paddingLeft: 12,
   },
   page: {
     position: 'relative',

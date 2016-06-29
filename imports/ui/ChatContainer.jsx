@@ -19,8 +19,8 @@ export default function ChatContainer({ messages, createMessage, isLoading }) {
           {messages.map(message => (
             <ChatMessage
               key={message._id}
-              message={message}
               isSelf={currentUserId === message.author()._id}
+              message={message}
             />
           ))}
         </div>
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     position: 'relative',
     height: 412,
     padding: '12px',
-    border: '1px solid #edefed',
+    border: '1px solid #dce0e0',
   },
 });
 

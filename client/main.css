@@ -1,13 +1,48 @@
-/* CSS declarations go here */
-.bubble {
-  border: 1px solid #ececec;
-  border-radius: 5px;
-  padding: 8px;
-  background: #ececec;
-  width: 80%;
-  display: inline-block;
+@font-face {
+  font-family: 'Circular Bold';
+  src: url("/fonts/circular_bold.otf");
 }
 
-.userImg {
-  display: inline-block;
+@font-face {
+  font-family: 'Circular Book';
+  src: url("/fonts/circular_book.otf");
+}
+
+@font-face {
+  font-family: 'Circular Medium';
+  src: url("/fonts/circular_medium.otf");
+}
+
+@font-face {
+  font-family: 'Circular Light';
+  src: url("/fonts/circular_light.otf");
+}
+
+body {
+  font-family: 'Circular Light';
+  letter-spacing: 1px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: #484848;
+  padding: 0;
+  margin: 0;
+}
+
+h2 {
+  font-family: 'Circular Medium';
+}
+
+h4 {
+  font-family: 'Circular Light';
+}
+
+p,
+span {
+  color: #757575;
+  font-family: 'Circular Light';
+  font-size: 14px;
 }

@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
   container: {
     position: 'relative',
     display: 'flex',
+    flexDirection: 'column',
     width: '100%',
     height: 256,
   },
