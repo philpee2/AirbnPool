@@ -9,7 +9,7 @@ const propTypes = {
 export default function ChatMessage({ message, isSelf }) {
   return (
     <div className={css(styles.container)} key={message._id}>
-      <div className="bubble">
+      <div className={css(styles.bubble)}>
         {message.text}
       </div>
       <div className={css(styles.imageContainer)}>
@@ -29,6 +29,14 @@ const styles = StyleSheet.create({
     position: 'relative',
     display: 'flex',
     margin: 12,
+  },
+  bubble: {
+    border: '1px solid #ececec',
+    'border-radius': 5,
+    padding: 8,
+    background: '#ececec',
+    width: '80%',
+    display: 'inline-block',
   },
   imageContainer: {
     position: 'relative',
