@@ -7,14 +7,6 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Groups } from '../api/groups/groups';
 import { Meteor } from 'meteor/meteor';
 
-const fakeListings = [{
-  _id: '1',
-  location: '',
-}, {
-  _id: '2',
-  location: '',
-}];
-
 const propTypes = {
   params: PropTypes.shape({
     groupId: PropTypes.string.isRequired,
@@ -45,6 +37,7 @@ class Group extends Component {
       onListingVote,
       allVotes,
       currentUserVotes,
+      listings,
     } = this.props;
     const { groupId } = params;
     return (
@@ -68,12 +61,12 @@ class Group extends Component {
           </div>
           <div className={css(styles.col, styles.padding)}>
             <ListingsContainer
-              listings={fakeListings}
+              listings={listings}
               onListingVote={onListingVote}
               allVotes={allVotes}
               currentUserVotes={currentUserVotes}
             />
-        </div>
+          </div>
         </div>
       </div>
     );
