@@ -11,7 +11,7 @@ export default function ListingsContainer({ listings }) {
   return (
     <div className={css(styles.container)}>
       {listings.map(listing => {
-        return <ListingCard listing={listing} />;
+        return <ListingCard key={listing._id} listing={listing} />;
       })}
     </div>
   );
@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
     position: 'relative',
     display: 'flex',
     width: '100%',
+    height: 256,
   },
 });
 

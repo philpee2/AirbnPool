@@ -3,7 +3,7 @@ import { StyleSheet, css } from 'aphrodite';
 
 const propTypes = {
   listing: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    _id: PropTypes.string.isRequired,
     location: PropTypes.string.isRequired,
   }),
 };
@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
   container: {
     position: 'relative',
     flex: 1,
+    height: '100%',
     padding: '0px 12px',
   },
   imageWrapper: {

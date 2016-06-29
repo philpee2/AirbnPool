@@ -1,1 +1,14 @@
 /* CSS declarations go here */
+.bubble {
+  border: 1px solid #ececec;
+  border-radius: 5px;
+  padding: 15px;
+  margin: 20px;
+  background: #ececec;
+  width: 80%;
+  display: inline-block;
+}
+
+.userImg {
+  display: inline-block;
+}

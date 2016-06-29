@@ -6,6 +6,14 @@ import ChatContainer from './ChatContainer';
 import ListingsContainer from './ListingsContainer';
 import UsersContainer from './UsersContainer';
 
+const fakeListings = [{
+  _id: '1',
+  location: '',
+}, {
+  _id: '2',
+  location: '',
+}];
+
 export default class App extends Component {
   render() {
     return (
@@ -18,11 +26,11 @@ export default class App extends Component {
             <h2>Choose a place, you'll stay at whichever has the most votes</h2>
           </div>
           <div className={css(styles.row)}>
-            <ListingsContainer listings={[1, 2]} />
+            <ListingsContainer listings={fakeListings} />
           </div>
           <div className={css(styles.row)}>
             <div className={css(styles.col)}>
-              <ChatContainer groupId={1} />
+              <ChatContainer groupId={'1'} />
             </div>
             <div className={css(styles.col)}>
               <UsersContainer users={[1, 2]} />
@@ -40,6 +48,8 @@ const styles = StyleSheet.create({
     display: 'inline-block',
     flex: 1,
     width: '50%',
+    padding: '0px 12px',
+    boxSizing: 'border-box',
   },
   header: {
     position: 'relative',
@@ -52,6 +62,7 @@ const styles = StyleSheet.create({
   row: {
     position: 'relative',
     display: 'flex',
+    paddingBottom: 24,
   },
   wrapper: {
     position: 'relative',

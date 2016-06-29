@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { StyleSheet, css } from 'aphrodite';
 
-import { Messages } from '../api/messages/messages';
+import { Groups } from '../api/groups/groups';
 import ListingCard from './ListingCard';
 
 const propTypes = {
@@ -21,11 +21,19 @@ class ChatContainer extends Component {
     };
 
     this.onMessageChange = this.onMessageChange.bind(this);
+    this.sendMessage = this.sendMessage.bind(this);
   }
 
   onMessageChange(e) {
     this.setState({
       newMessageText: e.target.value,
+    });
+  }
+
+  sendMessage(text, groupId) {
+    this.props.createMessage(text, groupId);
+    this.setState({
+      newMessageText: '',
     });
   }
 
@@ -35,8 +43,13 @@ class ChatContainer extends Component {
     return (
       <div className={css(styles.container)}>
         {messages.map(message => (
-          <div key={message._id}>
-            {message.text}
+          <div>
+            <div key={message._id} className="bubble">
+              {message.text}
+            </div>
+            <div className="userImg">
+              photo
+            </div>
           </div>
         ))}
 
@@ -45,7 +58,7 @@ class ChatContainer extends Component {
           onChange={this.onMessageChange}
         />
 
-        <button onClick={() => createMessage(newMessageText, groupId)}>
+        <button onClick={() => this.sendMessage(newMessageText, groupId)}>
           Send
         </button>
       </div>
@@ -67,9 +80,10 @@ ChatContainer.propTypes = propTypes;
 
 export default createContainer((props) => {
   const groupId = props.groupId;
-  const messagesHandle = Meteor.subscribe('messagesForGroup', groupId);
-  const isLoading = !messagesHandle.ready();
-  const messages = Messages.find({ groupId }).fetch();
+  const groupHandle = Meteor.subscribe('group', groupId);
+  const isLoading = !groupHandle.ready();
+  const group = Groups.findOne(groupId);
+  const messages = isLoading ? [] : group.messages().fetch();
   return {
     messages,
     isLoading,
