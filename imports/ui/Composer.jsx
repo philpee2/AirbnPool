@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
+import { StyleSheet, css } from 'aphrodite';
 
 const propTypes = {
   connected: PropTypes.bool.isRequired,
@@ -30,7 +31,7 @@ class Composer extends Component {
   render() {
     const { connected, loading, error } = this.props;
     return (
-      <div className="input-composer">
+      <div className={css(styles.container)}>
         {!connected || loading || error ? this.renderStatus() : this.renderInput()}
       </div>
     );
@@ -48,10 +49,10 @@ class Composer extends Component {
 
   renderInput() {
     return (
-      <form className="form-composer" onSubmit={this._onSubmit}>
+      <form className={css(styles.form)} onSubmit={this._onSubmit}>
         <input
           ref={this._setRef}
-          className="input-composer"
+          className={css(styles.input)}
           autoComplete="off"
           dir="ltr"
           disabled={this.props.disabled}
@@ -61,7 +62,7 @@ class Composer extends Component {
           onChange={this._onChange}
           value={this.state.text}
         />
-        <a className="button-send" href="#" onClick={this._onSendClick}>Send</a>
+        <a className={css(styles.button)} href="#" onClick={this._onSendClick}>Send</a>
       </form>
     );
   }
@@ -105,3 +106,29 @@ class Composer extends Component {
 Composer.propTypes = propTypes;
 
 export default Composer;
+
+const styles = StyleSheet.create({
+  container: {
+    height: 56,
+    position: 'relative',
+    padding: '0 20px',
+  },
+  form: {
+
+  },
+  input: {
+    width: '100%',
+    height: 56,
+    border: 0,
+    outline: 0,
+    'font-size': 14,
+  },
+  button: {
+    display: 'inline-block',
+    position: 'absolute',
+    right: 12,
+    top: 18,
+    color: 'rgb(4, 157, 145)',
+    'text-decoration': 'none',
+  }
+});

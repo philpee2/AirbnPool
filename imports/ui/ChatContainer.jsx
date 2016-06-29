@@ -46,7 +46,10 @@ const styles = StyleSheet.create({
   },
   footer: {
     position: 'absolute',
+    width: '100%',
     bottom: 0,
+    padding: 12,
+    'border-top': '1px solid #edefed',
   },
   messages: {
     position: 'relative',
@@ -57,7 +60,6 @@ const styles = StyleSheet.create({
   wrapper: {
     position: 'relative',
     height: 412,
-    padding: '12px',
     border: '1px solid #edefed',
   },
 });
