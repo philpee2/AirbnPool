@@ -25,6 +25,7 @@ const propTypes = {
   listings: PropTypes.arrayOf(PropTypes.object).isRequired,
   isLoading: PropTypes.bool,
   createMessage: PropTypes.func.isRequired,
+  onListingVote: PropTypes.func.isRequired,
 };
 
 class Group extends Component {
@@ -39,6 +40,7 @@ class Group extends Component {
       params,
       messages,
       users,
+      onListingVote,
     } = this.props;
     const { groupId } = params;
     return (
@@ -61,7 +63,10 @@ class Group extends Component {
             />
           </div>
           <div className={css(styles.col, styles.padding)}>
-            <ListingsContainer listings={fakeListings} />
+            <ListingsContainer
+              listings={fakeListings}
+              onListingVote={onListingVote}
+            />
         </div>
         </div>
       </div>
@@ -108,7 +113,8 @@ export default createContainer((props) => {
     group,
     users,
     listings,
-    createMessage: (text, groupId) => Meteor.call('messages.create', text, groupId),
+    createMessage: (text) => Meteor.call('messages.create', text, groupId),
     joinGroup: () => Meteor.call('userGroups.joinGroup', Meteor.userId(), groupId),
+    onListingVote: (listingId) => Meteor.call('votes.create', listingId, groupId),
   };
 }, Group);

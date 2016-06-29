@@ -5,14 +5,19 @@ import ListingCard from './ListingCard';
 
 const propTypes = {
   listings: PropTypes.array.isRequired,
+  onListingVote: PropTypes.func.isRequired,
 };
 
-export default function ListingsContainer({ listings }) {
+export default function ListingsContainer({ listings, onListingVote }) {
   return (
     <div className={css(styles.container)}>
-      {listings.map(listing => {
-        return <ListingCard key={listing._id} listing={listing} />;
-      })}
+      {listings.map(listing => (
+        <ListingCard
+          key={listing._id}
+          listing={listing}
+          onVote={() => onListingVote(listing._id)}
+        />
+      ))}
     </div>
   );
 }

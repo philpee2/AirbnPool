@@ -3,7 +3,7 @@ import { Votes } from './votes';
 
 Meteor.methods({
   'votes.create'(listingId, groupId) {
-    Messages.insert({
+    Votes.insert({
       listingId,
       groupId,
       userId: Meteor.userId(),
