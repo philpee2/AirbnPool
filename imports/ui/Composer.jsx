@@ -109,16 +109,17 @@ export default Composer;
 
 const styles = StyleSheet.create({
   container: {
-    height: 56,
     position: 'relative',
-    padding: '0 20px',
+    padding: '0 10px',
   },
   form: {
 
   },
   input: {
     width: '100%',
-    height: 56,
+    height: 30,
+    padding: '0 40px 0 0',
+    margin: 0,
     border: 0,
     outline: 0,
     'font-size': 14,
@@ -127,7 +128,7 @@ const styles = StyleSheet.create({
     display: 'inline-block',
     position: 'absolute',
     right: 12,
-    top: 18,
+    top: 6,
     color: 'rgb(4, 157, 145)',
     'text-decoration': 'none',
   }
