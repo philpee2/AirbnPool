@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 
-import { Messages } from '../api/messages/messages';
+import { Groups } from '../api/groups/groups';
 import ListingCard from './ListingCard';
 
 const propTypes = {
@@ -64,9 +64,10 @@ ChatGroup.propTypes = propTypes;
 
 export default createContainer((props) => {
   const groupId = props.groupId;
-  const messagesHandle = Meteor.subscribe('messagesForGroup', groupId);
-  const isLoading = !messagesHandle.ready();
-  const messages = Messages.find({ groupId }).fetch();
+  const groupHandle = Meteor.subscribe('group', groupId);
+  const isLoading = !groupHandle.ready();
+  const group = Groups.findOne(groupId);
+  const messages = isLoading ? [] : group.messages().fetch();
   return {
     messages,
     isLoading,
