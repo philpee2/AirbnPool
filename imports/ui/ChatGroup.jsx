@@ -20,11 +20,19 @@ class ChatGroup extends Component {
     };
 
     this.onMessageChange = this.onMessageChange.bind(this);
+    this.sendMessage = this.sendMessage.bind(this);
   }
 
   onMessageChange(e) {
     this.setState({
       newMessageText: e.target.value,
+    });
+  }
+
+  sendMessage(text, groupId) {
+    this.props.createMessage(text, groupId);
+    this.setState({
+      newMessageText: '',
     });
   }
 
@@ -44,7 +52,7 @@ class ChatGroup extends Component {
           onChange={this.onMessageChange}
         />
 
-        <button onClick={() => createMessage(newMessageText, groupId)}>
+        <button onClick={() => this.sendMessage(newMessageText, groupId)}>
           Send
         </button>
       </div>
