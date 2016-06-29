@@ -22,9 +22,10 @@ const propTypes = {
   users: PropTypes.arrayOf(PropTypes.object).isRequired,
   isLoading: PropTypes.bool,
   createMessage: PropTypes.func.isRequired,
+  numBeds: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
 
-function Group({ groupId , messages, group, users, isLoading, createMessage }) {
+function Group({ groupId , messages, group, users, isLoading, createMessage, numBeds }) {
   return (
     <div className={css(styles.page)}>
       <div className={css(styles.row)}>
@@ -42,7 +43,7 @@ function Group({ groupId , messages, group, users, isLoading, createMessage }) {
           />
         </div>
         <div className={css(styles.col)}>
-          <UsersContainer users={users} />
+          <UsersContainer users={users} numBeds={numBeds}/>
         </div>
       </div>
     </div>
@@ -78,12 +79,14 @@ export default createContainer((props) => {
   const isLoading = !groupHandle.ready();
   const group = Groups.findOne(groupId);
   const messages = isLoading ? [] : group.messages().fetch();
-  const users = isLoading ? [] : group.users().fetch();;
+  const users = isLoading ? [] : group.users().fetch();
+  const numBeds = [2, 4]; // todo: get from group
   return {
     messages,
     isLoading,
     group,
     users,
     createMessage: (text, groupId) => Meteor.call('messages.create', text, groupId),
+    numBeds,
   };
 }, Group);
