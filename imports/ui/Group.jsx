@@ -7,14 +7,6 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Groups } from '../api/groups/groups';
 import { Meteor } from 'meteor/meteor';
 
-const fakeListings = [{
-  _id: '1',
-  location: '',
-}, {
-  _id: '2',
-  location: '',
-}];
-
 const propTypes = {
   params: PropTypes.shape({
     groupId: PropTypes.string.isRequired,
