@@ -47,7 +47,6 @@ class ChatGroup extends Component {
               {message.text}
             </div>
             <div className="userImg">
-              </* get user image*/>
               photo
             </div>
           </div>
