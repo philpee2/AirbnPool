@@ -32,7 +32,7 @@ export default function ListingBallot({
 }) {
   return (
     <div className={css(styles.container)}>
-      <VoteButton status={votingStatus} onClick={onVote} />
+      {Meteor.userId() && <VoteButton status={votingStatus} onClick={onVote} />}
       {numVotes > 0 && (
         <div className={css(styles.numVotes)}>
           {`${numVotes} Vote(s)`}
