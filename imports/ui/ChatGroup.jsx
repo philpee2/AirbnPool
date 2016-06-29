@@ -1,6 +1,8 @@
 import React, { PropTypes, Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
+
 import { Messages } from '../api/messages/messages';
+import ListingCard from './ListingCard';
 
 const propTypes = {
   messages: PropTypes.arrayOf(PropTypes.object).isRequired,
