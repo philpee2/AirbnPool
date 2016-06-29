@@ -7,43 +7,30 @@ import Composer from './Composer';
 const propTypes = {
   messages: PropTypes.arrayOf(PropTypes.object).isRequired,
   createMessage: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
 
-export default class ChatContainer extends Component {
-  constructor(props) {
-    super(props);
-
-    this._createMessage = this._createMessage.bind(this);
-  }
-
-  _createMessage(text) {
-    this.props.createMessage(text);
-  }
-
-  render() {
-    const { messages, groupId, createMessage, isLoading } = this.props;
-    return (
-      <div className={css(styles.wrapper)}>
-        <div className={css(styles.container)}>
-          <div className={css(styles.messages)}>
-            {messages.map(message => (
-              <ChatMessage key={message._id} message={message} />
-            ))}
-          </div>
-
+export default function ChatContainer({ messages, createMessage, isLoading }) {
+  return (
+    <div className={css(styles.wrapper)}>
+      <div className={css(styles.container)}>
+        <div className={css(styles.messages)}>
+          {messages.map(message => (
+            <ChatMessage key={message._id} message={message} />
+          ))}
         </div>
-        <div className={css(styles.footer)}>
-          <Composer
-            groupId={groupId}
-            connected={!isLoading}
-            disabled={isLoading}
-            loading={isLoading}
-            sendMessage={this._createMessage}
-          />
-        </div>
+
       </div>
-    );
-  }
+      <div className={css(styles.footer)}>
+        <Composer
+          connected={!isLoading}
+          disabled={isLoading}
+          loading={isLoading}
+          sendMessage={createMessage}
+        />
+      </div>
+    </div>
+  );
 }
 
 const styles = StyleSheet.create({

@@ -36,6 +36,7 @@ function Group({ groupId , messages, isLoading, createMessage }) {
           <ChatContainer
             messages={messages}
             createMessage={(text) => createMessage(text, groupId)}
+            isLoading={isLoading}
           />
         </div>
         <div className={css(styles.col)}>
