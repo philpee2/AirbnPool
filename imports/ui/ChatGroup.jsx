@@ -49,7 +49,6 @@ class ChatGroup extends Component {
         <button onClick={() => createMessage(newMessageText, groupId)}>
           Send
         </button>
-        <ListingCard />
       </div>
     );
   }

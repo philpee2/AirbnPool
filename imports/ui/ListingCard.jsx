@@ -59,16 +59,17 @@ export default function ListingCard(props) {
 const styles = StyleSheet.create({
   container: {
     position: 'relative',
-    width: '296px',
-    padding: '0px 12px',
+    width: '100%',
   },
   imageWrapper: {
     position: 'relative',
     overflow: 'hidden',
+    width: '100%',
     paddingBottom: '67%',
   },
   image: {
     position: 'absolute',
+    minWidth: '100%',
     height: '100%',
   },
   wishlistButton: {
