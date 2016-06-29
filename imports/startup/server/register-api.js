@@ -8,3 +8,5 @@ import '../../api/listings/methods';
 import '../../api/listings/server/publications';
 import '../../api/listingGroups/methods';
 import '../../api/listingGroups/server/publications';
+import '../../api/votes/methods';
+import '../../api/votes/server/publications';

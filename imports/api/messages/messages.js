@@ -6,4 +6,4 @@ Messages.helpers({
   author() {
     return Meteor.users.findOne(this.userId);
   },
-})
+});
