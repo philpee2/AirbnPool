@@ -9,6 +9,10 @@ if (Meteor.isServer) {
       },
       children: [{
         find(group) {
+          return group.userGroups();
+        }
+      }, {
+        find(group) {
           return group.users();
         },
       }, {
