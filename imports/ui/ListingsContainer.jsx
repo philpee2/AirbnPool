@@ -37,17 +37,9 @@ export default function ListingsContainer({
   allVotes,
   currentUserVotes,
 }) {
-  const userHasVoted = currentUserVotes.length > 0;
-
-  let headerText = 'Vote on a listing to join Pool';
-  if (userHasVoted) {
-    const numVotesRamining = 8 - getVotesValue(allVotes);
-    headerText = `Waiting on ${numVotesRamining} more votes`;
-  }
-
   return (
     <div>
-      <h2>{headerText}</h2>
+      <h2>Vote on a listing to join Pool</h2>
       <div className={css(styles.container)}>
         {listings.map(listing => (
           <ListingCard
@@ -55,7 +47,6 @@ export default function ListingsContainer({
             listing={listing}
             numVotes={getListingVotesValue(allVotes, listing._id)}
             onVote={() => onListingVote(listing._id)}
-            showVotes={userHasVoted}
             votingStatus={getVotingStatus(listing._id, currentUserVotes)}
           />
         ))}

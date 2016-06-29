@@ -12,10 +12,9 @@ const propTypes = {
   onVote: PropTypes.func.isRequired,
   numVotes: PropTypes.number.isRequired,
   votingStatus: PropTypes.oneOf([CAN_VOTE, DID_VOTE, CANNOT_VOTE]).isRequired,
-  showVotes: PropTypes.bool.isRequired,
 };
 
-export default function ListingCard({ listing, onVote, votingStatus, numVotes, showVotes }) {
+export default function ListingCard({ listing, onVote, votingStatus, numVotes }) {
   const title = 'Boutique Retreat Bedroom';
   const reviewsCount = 5;
   return (
@@ -56,7 +55,6 @@ export default function ListingCard({ listing, onVote, votingStatus, numVotes, s
         <ListingBallot
           numVotes={numVotes}
           onVote={onVote}
-          showVotes={showVotes}
           votingStatus={votingStatus}
         />
       </div>

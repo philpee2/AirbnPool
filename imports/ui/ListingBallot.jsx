@@ -28,13 +28,12 @@ function VoteButton({ status, onClick }) {
 export default function ListingBallot({
   numVotes,
   onVote,
-  showVotes,
   votingStatus,
 }) {
   return (
     <div className={css(styles.container)}>
       <VoteButton status={votingStatus} onClick={onVote} />
-      {numVotes > 0 && showVotes && (
+      {numVotes > 0 && (
         <div className={css(styles.numVotes)}>
           {`${numVotes} Vote(s)`}
         </div>
