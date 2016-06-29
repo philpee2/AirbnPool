@@ -42,8 +42,8 @@ class ChatGroup extends Component {
     return (
       <div>
         {messages.map(message => (
-          <div>
-            <div key={message._id} className="bubble">
+          <div key={message._id}>
+            <div className="bubble">
               {message.text}
             </div>
             <div className="userImg">
