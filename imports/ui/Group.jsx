@@ -26,7 +26,7 @@ const propTypes = {
   createMessage: PropTypes.func.isRequired,
 };
 
-function Group({ params , messages, isLoading, createMessage }) {
+function Group({ params , users, messages, isLoading, createMessage }) {
   const { groupId } = params;
   return (
     <div className={css(styles.page)}>
