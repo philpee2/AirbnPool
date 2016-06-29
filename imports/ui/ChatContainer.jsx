@@ -4,6 +4,7 @@ import { StyleSheet, css } from 'aphrodite';
 
 import { Groups } from '../api/groups/groups';
 import ListingCard from './ListingCard';
+import Composer from './Composer';
 
 const propTypes = {
   messages: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -20,14 +21,11 @@ class ChatContainer extends Component {
       newMessageText: '',
     };
 
-    this.onMessageChange = this.onMessageChange.bind(this);
-    this.sendMessage = this.sendMessage.bind(this);
+    this._createMessage = this._createMessage.bind(this);
   }
 
-  onMessageChange(e) {
-    this.setState({
-      newMessageText: e.target.value,
-    });
+  _createMessage(text) {
+    this.props.sendMessage(text, this.props.groupId);
   }
 
   sendMessage(text, groupId) {
@@ -38,7 +36,7 @@ class ChatContainer extends Component {
   }
 
   render() {
-    const { messages, groupId, createMessage } = this.props;
+    const { messages, groupId, createMessage, isLoading } = this.props;
     const { newMessageText } = this.state;
     return (
       <div className={css(styles.container)}>
@@ -53,14 +51,12 @@ class ChatContainer extends Component {
           </div>
         ))}
 
-        <input
-          value={newMessageText}
-          onChange={this.onMessageChange}
+        <Composer
+          groupId={groupId}
+          connected={!isLoading}
+          disabled={isLoading}
+          sendMessage={this._createMessage}
         />
-
-        <button onClick={() => this.sendMessage(newMessageText, groupId)}>
-          Send
-        </button>
       </div>
     );
   }
