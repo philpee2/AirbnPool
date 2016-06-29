@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
+import { StyleSheet, css } from 'aphrodite';
 
 import { Groups } from '../api/groups/groups';
 import ListingCard from './ListingCard';
@@ -11,7 +12,7 @@ const propTypes = {
   createMessage: PropTypes.func.isRequired,
 };
 
-class ChatGroup extends Component {
+class ChatContainer extends Component {
   constructor(props) {
     super(props);
 
@@ -40,7 +41,7 @@ class ChatGroup extends Component {
     const { messages, groupId, createMessage } = this.props;
     const { newMessageText } = this.state;
     return (
-      <div>
+      <div className={css(styles.container)}>
         {messages.map(message => (
           <div key={message._id}>
             <div className="bubble">
@@ -65,7 +66,17 @@ class ChatGroup extends Component {
   }
 }
 
-ChatGroup.propTypes = propTypes;
+const styles = StyleSheet.create({
+  container: {
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
+    padding: '12px',
+    border: '1px solid #edefed',
+  },
+});
+
+ChatContainer.propTypes = propTypes;
 
 export default createContainer((props) => {
   const groupId = props.groupId;
@@ -79,4 +90,4 @@ export default createContainer((props) => {
     groupId,
     createMessage: (text, groupId) => Meteor.call('messages.create', text, groupId),
   };
-}, ChatGroup);
+}, ChatContainer);

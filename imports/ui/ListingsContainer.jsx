@@ -7,11 +7,11 @@ const propTypes = {
   listings: PropTypes.array.isRequired,
 };
 
-export default function ChatListings({ listings }) {
+export default function ListingsContainer({ listings }) {
   return (
     <div className={css(styles.container)}>
       {listings.map(listing => {
-        return <ListingCard listing={listing} key={listing._id} />;
+        return <ListingCard key={listing._id} listing={listing} />;
       })}
     </div>
   );
@@ -20,8 +20,10 @@ export default function ChatListings({ listings }) {
 const styles = StyleSheet.create({
   container: {
     position: 'relative',
+    display: 'flex',
     width: '100%',
+    height: 256,
   },
 });
 
-ChatListings.propTypes = propTypes;
+ListingsContainer.propTypes = propTypes;

@@ -59,7 +59,9 @@ export default function ListingCard(props) {
 const styles = StyleSheet.create({
   container: {
     position: 'relative',
-    width: '100%',
+    flex: 1,
+    height: '100%',
+    padding: '0px 12px',
   },
   imageWrapper: {
     position: 'relative',
