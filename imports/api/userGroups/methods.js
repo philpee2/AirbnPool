@@ -3,12 +3,14 @@ import { UserGroups } from './userGroups';
 
 Meteor.methods({
   'userGroups.joinGroup'(userId, groupId) {
-    UserGroups.insert({
-      numBeds: 1,
-      createdAt: new Date(),
-      groupId,
-      userId,
-    });
+    if (!UserGroups.findOne({ userId, groupId })) {
+      UserGroups.insert({
+        numBeds: 1,
+        createdAt: new Date(),
+        groupId,
+        userId,
+      });
+    }
   },
 
   'userGroups.setNumBeds'(userId, groupId, numBeds) {

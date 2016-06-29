@@ -42,11 +42,16 @@ const styles = StyleSheet.create({
   container: {
     position: 'relative',
     height: '100%',
+    padding: '12px',
     overflow: 'scroll',
   },
   footer: {
     position: 'absolute',
+    width: '100%',
+    height: 56,
     bottom: 0,
+    padding: 12,
+    'border-top': '1px solid #edefed',
   },
   messages: {
     position: 'relative',
@@ -57,7 +62,6 @@ const styles = StyleSheet.create({
   wrapper: {
     position: 'relative',
     height: 412,
-    padding: '12px',
     border: '1px solid #dce0e0',
   },
 });

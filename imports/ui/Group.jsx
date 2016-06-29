@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import ChatContainer from './ChatContainer';
 import ListingsContainer from './ListingsContainer';
 import UsersContainer from './UsersContainer';
@@ -22,34 +22,47 @@ const propTypes = {
   messages: PropTypes.arrayOf(PropTypes.object).isRequired,
   group: PropTypes.object,
   users: PropTypes.arrayOf(PropTypes.object).isRequired,
+  listings: PropTypes.arrayOf(PropTypes.object).isRequired,
   isLoading: PropTypes.bool,
   createMessage: PropTypes.func.isRequired,
 };
 
-function Group({ params , users, messages, isLoading, createMessage }) {
-  const { groupId } = params;
-  return (
-    <div className={css(styles.page)}>
-      <div className={css(styles.row)}>
-        <h2>Choose a place, you'll stay at whichever has the most votes</h2>
-      </div>
-      <div className={css(styles.row)}>
-        <UsersContainer users={users} />
-      </div>
-      <div className={css(styles.row)}>
-        <div className={css(styles.col)}>
-          <ChatContainer
-            messages={messages}
-            createMessage={(text) => createMessage(text, groupId)}
-            isLoading={isLoading}
-          />
+class Group extends Component {
+  componentDidMount() {
+    this.props.joinGroup();
+  }
+
+  render() {
+    const {
+      isLoading,
+      params,
+      messages,
+      users,
+    } = this.props;
+    const { groupId } = params;
+    return (
+      <div className={css(styles.page)}>
+        <div className={css(styles.row)}>
+          <h2>Choose a place, you'll stay at whichever has the most votes</h2>
         </div>
-        <div className={css(styles.col, styles.padding)}>
-          <ListingsContainer listings={fakeListings} />
+        <div className={css(styles.row)}>
+          <UsersContainer users={users} />
+        </div>
+        <div className={css(styles.row)}>
+          <div className={css(styles.col)}>
+            <ChatContainer
+              messages={messages}
+              createMessage={(text) => createMessage(text, groupId)}
+              isLoading={isLoading}
+            />
+          </div>
+          <div className={css(styles.col, styles.padding)}>
+            <ListingsContainer listings={fakeListings} />
+        </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 Group.propTypes = propTypes;
@@ -83,12 +96,15 @@ export default createContainer((props) => {
   const isLoading = !groupHandle.ready();
   const group = Groups.findOne(groupId);
   const messages = isLoading ? [] : group.messages().fetch();
-  const users = isLoading ? [] : group.users().fetch();;
+  const users = isLoading ? [] : group.users().fetch();
+  const listings = isLoading ? [] : group.listings().fetch();
   return {
     messages,
     isLoading,
     group,
     users,
+    listings,
     createMessage: (text, groupId) => Meteor.call('messages.create', text, groupId),
+    joinGroup: () => Meteor.call('userGroups.joinGroup', Meteor.userId(), groupId),
   };
 }, Group);

@@ -19,6 +19,14 @@ if (Meteor.isServer) {
         find(group) {
           return group.messages();
         },
+      }, {
+        find(group) {
+          return group.listingGroups();
+        },
+      }, {
+        find(group) {
+          return group.listings();
+        },
       }],
     };
   });
