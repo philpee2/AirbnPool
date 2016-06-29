@@ -44,7 +44,7 @@ export default function ListingCard(props) {
         </div>
 
         <div className={css(styles.profilePhotoContainer)}>
-          <a href={''}>
+          <a className={css(styles.userImageWrapper)} href={''}>
             <img
               className={css(styles.userImage)}
               src="https://avatars1.githubusercontent.com/u/2244653?v=3&s=460"
@@ -128,7 +128,12 @@ const styles = StyleSheet.create({
     float: 'right',
     position: 'relative',
     overflow: 'hidden',
-    top: -80,
+    top: -40,
+  },
+  userImageWrapper: {
+    display: 'flex',
+    position: 'relative',
+    height: '100%',
   },
   userImage: {
     width: '100%',
