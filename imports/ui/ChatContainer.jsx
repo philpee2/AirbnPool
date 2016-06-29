@@ -1,4 +1,5 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 import { StyleSheet, css } from 'aphrodite';
 import ChatMessage from './ChatMessage';
 import ListingCard from './ListingCard';
@@ -10,32 +11,44 @@ const propTypes = {
   isLoading: PropTypes.bool.isRequired,
 };
 
-export default function ChatContainer({ messages, createMessage, isLoading }) {
-  const currentUserId = Meteor.userId();
-  return (
-    <div className={css(styles.wrapper)}>
-      <div className={css(styles.container)}>
-        <div className={css(styles.messages)}>
-          {messages.map(message => (
-            <ChatMessage
-              key={message._id}
-              isSelf={currentUserId === message.author()._id}
-              message={message}
-            />
-          ))}
-        </div>
+export default class ChatContainer extends Component {
+  componentDidUpdate() {
+    const scrollable = ReactDOM.findDOMNode(this.refs.scrollable);
+    scrollable.scrollTop = scrollable.scrollHeight;
+  }
 
+  render() {
+    const {
+      createMessage,
+      isLoading,
+      messages,
+    } = this.props;
+    const currentUserId = Meteor.userId();
+    return (
+      <div className={css(styles.wrapper)}>
+        <div className={css(styles.container)} ref={'scrollable'}>
+          <div className={css(styles.messages)}>
+            {messages.map(message => (
+              <ChatMessage
+                key={message._id}
+                isSelf={currentUserId === message.author()._id}
+                message={message}
+              />
+            ))}
+          </div>
+
+        </div>
+        <div className={css(styles.footer)}>
+          <Composer
+            connected={!isLoading}
+            disabled={isLoading}
+            loading={isLoading}
+            sendMessage={createMessage}
+          />
+        </div>
       </div>
-      <div className={css(styles.footer)}>
-        <Composer
-          connected={!isLoading}
-          disabled={isLoading}
-          loading={isLoading}
-          sendMessage={createMessage}
-        />
-      </div>
-    </div>
-  );
+    );
+  }
 }
 
 const styles = StyleSheet.create({
