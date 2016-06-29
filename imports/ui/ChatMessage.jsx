@@ -12,7 +12,7 @@ export default function ChatMessage({ message, isSelf }) {
   const bubbleStyles = [styles.bubble];
   const dateStyles = [styles.date];
   const imageContainerStyles = [styles.imageContainer];
-  if (false && isSelf) {
+  if (isSelf) {
     containerStyles.push(styles.containerSelf);
     bubbleStyles.push(styles.bubbleSelf);
     dateStyles.push(styles.dateSelf);
@@ -27,7 +27,7 @@ export default function ChatMessage({ message, isSelf }) {
           <TimeAgo date={message.createdAt} />
         </div>
       </div>
-      {false && isSelf ?
+      {isSelf ?
           <div className={css(styles.arrowSelf)}><img src="/images/green-chat-tail.png" width="6" /></div> :
           <div className={css(styles.arrow)}><img src="/images/white-chat-tail.png" width="6" /></div>
       }
