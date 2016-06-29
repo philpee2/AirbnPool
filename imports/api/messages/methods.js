@@ -3,6 +3,10 @@ import { Messages } from './messages';
 
 Meteor.methods({
   'messages.create'(text, groupId) {
+    if (!this.userId) {
+      throw new Meteor.Error('not-authorized');
+    }
+
     Messages.insert({
       text,
       groupId,

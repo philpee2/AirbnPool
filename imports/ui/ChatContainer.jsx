@@ -41,7 +41,7 @@ export default class ChatContainer extends Component {
         <div className={css(styles.footer)}>
           <Composer
             connected={!isLoading}
-            disabled={isLoading}
+            disabled={isLoading || !Meteor.userId()}
             loading={isLoading}
             sendMessage={createMessage}
           />
