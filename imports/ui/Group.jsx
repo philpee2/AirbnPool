@@ -44,7 +44,10 @@ class Group extends Component {
     return (
       <div className={css(styles.page)}>
         <div className={css(styles.row)}>
-          <h2>Choose a place, you'll stay at whichever has the most votes</h2>
+          <div className={css(styles.col)}>
+            <h1>Airbnb Pool</h1>
+            <h4>Trip to Tokyo, June 2nd to June 6th</h4>
+          </div>
         </div>
         <div className={css(styles.row)}>
           <UsersContainer users={users} />

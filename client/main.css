@@ -45,6 +45,11 @@ h4 {
   margin: 0;
 }
 
+h1 {
+  margin-bottom: 8px;
+  font-family: 'Circular Bold';
+}
+
 h2 {
   font-family: 'Circular Medium';
 }

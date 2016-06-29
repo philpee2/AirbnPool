@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
     position: 'relative',
     height: '100%',
     padding: '12px',
-    paddingBottom: 52,
     overflow: 'scroll',
   },
   footer: {
@@ -63,7 +62,8 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     position: 'relative',
-    height: 412,
+    height: 712,
+    paddingBottom: 52,
     border: '1px solid #dce0e0',
   },
 });
