@@ -3,6 +3,9 @@ import ChatContainer from './ChatContainer';
 import ListingsContainer from './ListingsContainer';
 import UsersContainer from './UsersContainer';
 import { StyleSheet, css } from 'aphrodite';
+import { createContainer } from 'meteor/react-meteor-data';
+import { Groups } from '../api/groups/groups';
+import { Meteor } from 'meteor/meteor';
 
 const fakeListings = [{
   _id: '1',
@@ -13,10 +16,13 @@ const fakeListings = [{
 }];
 
 const propTypes = {
-
+  groupId: PropTypes.string.isRequired,
+  messages: PropTypes.arrayOf(PropTypes.object).isRequired,
+  isLoading: PropTypes.bool,
+  createMessage: PropTypes.func.isRequired,
 };
 
-export default function Group(props) {
+function Group({ groupId , messages, isLoading, createMessage }) {
   return (
     <div className={css(styles.page)}>
       <div className={css(styles.row)}>
@@ -27,7 +33,10 @@ export default function Group(props) {
       </div>
       <div className={css(styles.row)}>
         <div className={css(styles.col)}>
-          <ChatContainer groupId={'1'} />
+          <ChatContainer
+            messages={messages}
+            createMessage={(text) => createMessage(text, groupId)}
+          />
         </div>
         <div className={css(styles.col)}>
           <UsersContainer users={[1, 2]} />
@@ -59,3 +68,17 @@ const styles = StyleSheet.create({
     paddingBottom: 24,
   },
 });
+
+export default createContainer((props) => {
+  const groupId = props.groupId;
+  const groupHandle = Meteor.subscribe('group', groupId);
+  const isLoading = !groupHandle.ready();
+  const group = Groups.findOne(groupId);
+  const messages = isLoading ? [] : group.messages().fetch();
+  return {
+    messages,
+    isLoading,
+    groupId,
+    createMessage: (text, groupId) => Meteor.call('messages.create', text, groupId),
+  };
+}, Group);

@@ -11,7 +11,7 @@ export default class App extends Component {
         <div className={css(styles.header)}>
           <AccountsUIWrapper />
         </div>
-        <Group />
+        <Group groupId="1" />
       </div>
     );
   }
