@@ -73,10 +73,13 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 5,
   },
   date: {
-    'font-size': 12,
+    fontSize: 12,
+    marginTop: 4,
+    color: 'rgb(152, 152, 152)',
   },
   dateSelf: {
     'font-weight': 'bold',
+    color: 'white',
   },
   arrow: {
     flexGrow: 0,
@@ -84,6 +87,9 @@ const styles = StyleSheet.create({
     bottom: -5,
   },
   arrowSelf: {
+    flexGrow: 0,
+    position: 'relative',
+    bottom: -4,
     right: 1,
   },
   imageContainer: {
