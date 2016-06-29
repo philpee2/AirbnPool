@@ -7,6 +7,7 @@ Meteor.methods({
       text,
       groupId,
       userId: Meteor.userId(),
+      createdAt: new Date(),
     });
   }
 });
