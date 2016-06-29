@@ -33,13 +33,11 @@ class ChatGroup extends Component {
     const { newMessageText } = this.state;
     return (
       <div>
-        {messages.map(message => {
-          return (
-            <div>
-              {message.text}
-            </div>
-          );
-        })}
+        {messages.map(message => (
+          <div key={message._id}>
+            {message.text}
+          </div>
+        ))}
 
         <input
           value={newMessageText}
