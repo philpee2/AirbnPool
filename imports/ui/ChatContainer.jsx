@@ -25,7 +25,7 @@ class ChatContainer extends Component {
   }
 
   _createMessage(text) {
-    this.props.sendMessage(text, this.props.groupId);
+    this.props.createMessage(text, this.props.groupId);
   }
 
   sendMessage(text, groupId) {
@@ -55,6 +55,7 @@ class ChatContainer extends Component {
           groupId={groupId}
           connected={!isLoading}
           disabled={isLoading}
+          loading={isLoading}
           sendMessage={this._createMessage}
         />
       </div>

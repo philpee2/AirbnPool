@@ -30,7 +30,7 @@ class Composer extends Component {
   render() {
     const { connected, loading, error } = this.props;
     return (
-      <div className="composer">
+      <div className="input-composer">
         {!connected || loading || error ? this.renderStatus() : this.renderInput()}
       </div>
     );
@@ -48,7 +48,7 @@ class Composer extends Component {
 
   renderInput() {
     return (
-      <form className={styles.component} onSubmit={this._onSubmit}>
+      <form className="form-composer" onSubmit={this._onSubmit}>
         <input
           ref={this._setRef}
           className="input-composer"
@@ -61,7 +61,7 @@ class Composer extends Component {
           onChange={this._onChange}
           value={this.state.text}
         />
-        <a className={styles.send} href="#" onClick={this._onSendClick}>Send</a>
+        <a className="button-send" href="#" onClick={this._onSendClick}>Send</a>
       </form>
     );
   }
@@ -91,10 +91,9 @@ class Composer extends Component {
     const value = this.getValue();
 
     if (!sending && value.length > 0) {
-      sendMessage(this.getValue()).then(() => {
-        this.setState({ text: '' });
-        this._inputNode.focus();
-      });
+      sendMessage(this.getValue());
+      this.setState({ text: '' });
+      this._inputNode.focus();
     }
   }
 
