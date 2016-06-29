@@ -1,8 +1,12 @@
 import React, { PropTypes } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
-export default function ChatMessage(props) {
-  const { message } = props;
+const propTypes = {
+  message: PropTypes.object.isRequired,
+  isSelf: PropTypes.bool.isRequired,
+};
+
+export default function ChatMessage({ message, isSelf }) {
   return (
     <div className={css(styles.container)} key={message._id}>
       <div className="bubble">
@@ -17,6 +21,8 @@ export default function ChatMessage(props) {
     </div>
   );
 }
+
+ChatMessage.propTypes = propTypes;
 
 const styles = StyleSheet.create({
   container: {

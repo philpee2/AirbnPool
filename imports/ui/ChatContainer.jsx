@@ -11,12 +11,17 @@ const propTypes = {
 };
 
 export default function ChatContainer({ messages, createMessage, isLoading }) {
+  const currentUserId = Meteor.userId();
   return (
     <div className={css(styles.wrapper)}>
       <div className={css(styles.container)}>
         <div className={css(styles.messages)}>
           {messages.map(message => (
-            <ChatMessage key={message._id} message={message} />
+            <ChatMessage
+              key={message._id}
+              message={message}
+              isSelf={currentUserId === message.author()._id}
+            />
           ))}
         </div>
 
