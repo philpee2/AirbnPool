@@ -1,6 +1,8 @@
 import React, { PropTypes, Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
+
 import { Messages } from '../api/messages/messages';
+import ListingCard from './ListingCard';
 
 const propTypes = {
   messages: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -47,6 +49,7 @@ class ChatGroup extends Component {
         <button onClick={() => createMessage(newMessageText, groupId)}>
           Send
         </button>
+        <ListingCard />
       </div>
     );
   }
