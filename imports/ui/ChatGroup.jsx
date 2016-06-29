@@ -58,7 +58,7 @@ ChatGroup.propTypes = propTypes;
 
 export default createContainer((props) => {
   const groupId = props.groupId;
-    const messagesHandle = Meteor.subscribe('messagesForGroup', groupId);
+  const messagesHandle = Meteor.subscribe('messagesForGroup', groupId);
   const isLoading = !messagesHandle.ready();
   const messages = Messages.find({ groupId }).fetch();
   return {

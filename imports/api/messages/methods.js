@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import Messages from './messages';
+import { Messages } from './messages';
 
 Meteor.methods({
   'messages.create'(text, groupId) {
