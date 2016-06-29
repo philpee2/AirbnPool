@@ -22,11 +22,12 @@ const propTypes = {
   messages: PropTypes.arrayOf(PropTypes.object).isRequired,
   group: PropTypes.object,
   users: PropTypes.arrayOf(PropTypes.object).isRequired,
+  listings: PropTypes.arrayOf(PropTypes.object).isRequired,
   isLoading: PropTypes.bool,
   createMessage: PropTypes.func.isRequired,
 };
 
-function Group({ params , users, messages, isLoading, createMessage }) {
+function Group({ params , messages, group, users, listings, isLoading, createMessage }) {
   const { groupId } = params;
   return (
     <div className={css(styles.page)}>
@@ -34,7 +35,7 @@ function Group({ params , users, messages, isLoading, createMessage }) {
         <h2>Choose a place, you'll stay at whichever has the most votes</h2>
       </div>
       <div className={css(styles.row)}>
-        <ListingsContainer listings={fakeListings} />
+        <ListingsContainer listings={listings} />
       </div>
       <div className={css(styles.row)}>
         <div className={css(styles.col)}>
@@ -81,12 +82,14 @@ export default createContainer((props) => {
   const isLoading = !groupHandle.ready();
   const group = Groups.findOne(groupId);
   const messages = isLoading ? [] : group.messages().fetch();
-  const users = isLoading ? [] : group.users().fetch();;
+  const users = isLoading ? [] : group.users().fetch();
+  const listings = isLoading ? [] : group.listings().fetch();
   return {
     messages,
     isLoading,
     group,
     users,
+    listings,
     createMessage: (text, groupId) => Meteor.call('messages.create', text, groupId),
   };
 }, Group);
