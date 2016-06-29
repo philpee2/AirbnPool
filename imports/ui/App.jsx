@@ -5,6 +5,14 @@ import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 import ChatGroup from './ChatGroup';
 import ChatListings from './ChatListings';
 
+const fakeListings = [{
+  _id: '1',
+  location: '',
+}, {
+  _id: '2',
+  location: '',
+}];
+
 export default class App extends Component {
   render() {
     return (
@@ -18,7 +26,7 @@ export default class App extends Component {
             <ChatGroup groupId={1} />
           </div>
           <div className={css(styles.col)}>
-            <ChatListings listings={[1, 2]} />
+            <ChatListings listings={fakeListings} />
           </div>
         </div>
       </div>

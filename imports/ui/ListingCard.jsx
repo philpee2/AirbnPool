@@ -3,7 +3,7 @@ import { StyleSheet, css } from 'aphrodite';
 
 const propTypes = {
   listing: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    _id: PropTypes.string.isRequired,
     location: PropTypes.string.isRequired,
   }),
 };

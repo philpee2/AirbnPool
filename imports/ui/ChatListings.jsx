@@ -11,7 +11,7 @@ export default function ChatListings({ listings }) {
   return (
     <div className={css(styles.container)}>
       {listings.map(listing => {
-        return <ListingCard listing={listing} />;
+        return <ListingCard listing={listing} key={listing._id} />;
       })}
     </div>
   );
