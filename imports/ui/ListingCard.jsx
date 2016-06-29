@@ -15,9 +15,6 @@ export default function ListingCard({ listing, onVote }) {
   return (
     <div className={css(styles.container)}>
       <div className={css(styles.imageWrapper)}>
-        <div className={css(styles.wishlistButton)}>
-          <button>Wishlist</button>
-        </div>
         <img
           className={css(styles.image)}
           src="https://a2.muscache.com/im/pictures/97759166/422a22ef_original.jpg?aki_policy=x_medium"
@@ -75,13 +72,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     minWidth: '100%',
     height: '100%',
-  },
-  wishlistButton: {
-    position: 'absolute',
-    right: 0,
-    top: 0,
-    margin: 2 * 6,
-    zIndex: 1,
   },
   businessReady: {
     // ...font.label5,
