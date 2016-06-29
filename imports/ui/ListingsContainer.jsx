@@ -3,6 +3,7 @@ import { StyleSheet, css } from 'aphrodite';
 
 import ListingCard from './ListingCard';
 import { CAN_VOTE, DID_VOTE, CANNOT_VOTE } from './constants/voting_status_constants';
+import { sumBy } from 'lodash';
 
 const propTypes = {
   listings: PropTypes.array.isRequired,
@@ -21,6 +22,15 @@ function getVotingStatus(listingId, currentUserVotes) {
   }
 }
 
+function getVotesValue(votes) {
+  return sumBy(votes, vote => vote.value());
+}
+
+function getListingVotesValue(votes, listingId) {
+  const votesForListing = votes.filter(vote => vote.listingId === listingId);
+  return getVotesValue(votesForListing);
+}
+
 export default function ListingsContainer({
   listings,
   onListingVote,
@@ -28,7 +38,13 @@ export default function ListingsContainer({
   currentUserVotes,
 }) {
   const userHasVoted = currentUserVotes.length > 0;
-  const headerText = 'Vote on a listing to join Pool';
+
+  let headerText = 'Vote on a listing to join Pool';
+  if (userHasVoted) {
+    const numVotesRamining = 8 - getVotesValue(allVotes);
+    headerText = `Waiting on ${numVotesRamining} more votes`;
+  }
+
   return (
     <div>
       <h2>{headerText}</h2>
@@ -38,7 +54,7 @@ export default function ListingsContainer({
             key={listing._id}
             listing={listing}
             onVote={() => onListingVote(listing._id)}
-            numVotes={allVotes.filter(vote => vote.listingId === listing._id).length}
+            numVotes={getListingVotesValue(allVotes, listing._id)}
             votingStatus={getVotingStatus(listing._id, currentUserVotes)}
             showVotes={userHasVoted}
           />
