@@ -2,6 +2,8 @@ import React, { PropTypes } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 import { CAN_VOTE, DID_VOTE, CANNOT_VOTE } from './constants/voting_status_constants';
 
+import ListingBallot from './ListingBallot';
+
 const propTypes = {
   listing: PropTypes.shape({
     _id: PropTypes.string.isRequired,
@@ -13,40 +15,17 @@ const propTypes = {
   showVotes: PropTypes.bool.isRequired,
 };
 
-function VoteButton({ status, onClick }) {
-  switch (status) {
-    case CAN_VOTE:
-      return (
-        <button className={css(styles.voteButton)} onClick={onClick}>
-          Vote
-        </button>
-      );
-    case CANNOT_VOTE:
-      return (
-        <button className={css(styles.disabledVoteButton)} disabled>
-          Vote
-        </button>
-      );
-    case DID_VOTE:
-      return (
-        <div className={css(styles.votedIcon)}>
-          Checkmark
-        </div>
-      );
-  }
-}
-
 export default function ListingCard({ listing, onVote, votingStatus, numVotes, showVotes }) {
   const title = 'Boutique Retreat Bedroom';
   const reviewsCount = 5;
   return (
     <div className={css(styles.container)}>
-      <div className={css(styles.imageWrapper)}>
+      <div className={css(styles.header)}>
         <img
           className={css(styles.image)}
           src="https://a2.muscache.com/im/pictures/97759166/422a22ef_original.jpg?aki_policy=x_medium"
         />
-        <div className={css(styles.priceContainer)}>
+        <div className={css(styles.pricing)}>
           <h3 className={css(styles.price)}>
             {'$100'}
           </h3>
@@ -56,8 +35,8 @@ export default function ListingCard({ listing, onVote, votingStatus, numVotes, s
         </div>
       </div>
 
-      <div className={css(styles.bottomRow)}>
-        <div className={css(styles.textContainer)}>
+      <div className={css(styles.footer)}>
+        <div className={css(styles.metadata)}>
           <h4 className={css(styles.title)}>
             {title}
           </h4>
@@ -68,31 +47,53 @@ export default function ListingCard({ listing, onVote, votingStatus, numVotes, s
           </div>
         </div>
 
-        <div className={css(styles.profilePhotoContainer)}>
-          <a className={css(styles.userImageWrapper)} href={''}>
-            <img
-              className={css(styles.userImage)}
-              src="https://avatars1.githubusercontent.com/u/2244653?v=3&s=460"
-            />
-          </a>
+        <div className={css(styles.profile)}>
+          <img
+            className={css(styles.user)}
+            src="https://avatars1.githubusercontent.com/u/2244653?v=3&s=460"
+          />
         </div>
-        <VoteButton status={votingStatus} onClick={onVote} />
-        {numVotes > 0 && showVotes && (
-          <div className={css(styles.numVotes)}>{numVotes} Votes</div>
-        )}
+        <ListingBallot
+          numVotes={numVotes}
+          onVote={onVote}
+          showVotes={showVotes}
+          votingStatus={votingStatus}
+        />
       </div>
     </div>
   );
 }
 
 const styles = StyleSheet.create({
+  button: {
+    fontFamily: 'Circular Bold',
+    fontSize: 14,
+    color: '#ffffff',
+    border: 'none',
+    borderRadius: 2,
+    backgroundColor: '#ff5a5f',
+    cursor: 'pointer',
+    paddingTop: 6,
+    paddingBottom: 6,
+    paddingRight: 12,
+    paddingLeft: 12,
+    transition: 'opacity 0.3s',
+  },
   container: {
     position: 'relative',
     flex: 1,
     marginBottom: 12,
     border: '1px solid #dce0e0',
   },
-  imageWrapper: {
+  footer: {
+    display: 'flex',
+    flexDirection: 'column',
+    position: 'relative',
+    padding: 12,
+    backgroundColor: '#ffffff',
+    borderBottom: '1px solid #dce0e0',
+  },
+  header: {
     position: 'relative',
     overflow: 'hidden',
     width: '100%',
@@ -103,16 +104,19 @@ const styles = StyleSheet.create({
     minWidth: '100%',
     height: '100%',
   },
-  businessReady: {
-    // ...font.label5,
-    color: '#ffffff',
-    paddingTop: 0.5 * 6,
-    paddingBottom: 0.5 * 6,
-    paddingRight: 1 * 6,
-    marginBottom: 1,
-    bottom: 6 * 6 + 1,
+  metadata: {
+    width: '80%',
+    display: 'inline-block',
   },
-  priceContainer: {
+  middot: {
+    marginLeft: 6,
+    marginRight: 6,
+  },
+  price: {
+    display: 'inline-block',
+    color: '#ffffff',
+  },
+  pricing: {
     position: 'absolute',
     left: 0,
     background: '#bbbbbb',
@@ -124,58 +128,43 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(45,45,45,0.9)',
     color: '#ffffff',
   },
-  price: {
-    display: 'inline-block',
-    color: '#ffffff',
+  profile: {
+    position: 'absolute',
+    overflow: 'hidden',
+    right: 0,
+    bottom: 64,
+    borderRadius: '50%',
+    border: '2px solid #fff',
+    width: 56,
+    height: 56,
   },
-  bottomRow: {
-    backgroundColor: '#ffffff',
-    padding: 2 * 6,
-  },
-  textContainer: {
-    width: '80%',
-    display: 'inline-block',
+  statistics: {
+    display: 'flex',
+    justifyContent: 'space-between',
   },
   title: {
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
   },
-  middot: {
-    marginLeft: 6,
-    marginRight: 6,
-  },
-  profilePhotoContainer: {
-    borderRadius: '50%',
-    border: '2px solid #fff',
-    width: 56,
-    height: 56,
-    float: 'right',
-    position: 'relative',
-    overflow: 'hidden',
-    top: -40,
-  },
-  userImageWrapper: {
-    display: 'flex',
-    position: 'relative',
-    height: '100%',
-  },
-  userImage: {
+  user: {
     width: '100%',
-  },
-  voteButton: {
-    backgroundColor: 'red',
-    color: 'white',
-  },
-  disabledVoteButton: {
-    color: 'white',
-    backgroundColor: 'grey',
   },
   votedIcon: {
     backgroundColor: 'red',
   },
-  numVotes: {
-
+  disabledVoteButton: {
+    fontFamily: 'Circular Bold',
+    fontSize: 14,
+    color: '#ffffff',
+    border: 'none',
+    borderRadius: 2,
+    backgroundColor: '#dce0e0',
+    paddingTop: 6,
+    paddingBottom: 6,
+    paddingRight: 12,
+    paddingLeft: 12,
+    transition: 'opacity 0.3s',
   },
 });
 
