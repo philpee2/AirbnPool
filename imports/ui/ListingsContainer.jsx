@@ -27,18 +27,23 @@ export default function ListingsContainer({
   allVotes,
   currentUserVotes,
 }) {
+  const userHasVoted = currentUserVotes.length > 0;
+  const headerText = 'Vote on a listing to join Pool';
   return (
-    <div className={css(styles.container)}>
-      {listings.map(listing => (
-        <ListingCard
-          key={listing._id}
-          listing={listing}
-          onVote={() => onListingVote(listing._id)}
-          numVotes={allVotes.filter(vote => vote.listingId === listing._id).length}
-          votingStatus={getVotingStatus(listing._id, currentUserVotes)}
-          showVotes={currentUserVotes.length > 0}
-        />
-      ))}
+    <div>
+      <h2>{headerText}</h2>
+      <div className={css(styles.container)}>
+        {listings.map(listing => (
+          <ListingCard
+            key={listing._id}
+            listing={listing}
+            onVote={() => onListingVote(listing._id)}
+            numVotes={allVotes.filter(vote => vote.listingId === listing._id).length}
+            votingStatus={getVotingStatus(listing._id, currentUserVotes)}
+            showVotes={userHasVoted}
+          />
+        ))}
+      </div>
     </div>
   );
 }
