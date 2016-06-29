@@ -6,3 +6,5 @@ import '../../api/userGroups/methods';
 import '../../api/userGroups/server/publications';
 import '../../api/listings/methods';
 import '../../api/listings/server/publications';
+import '../../api/listingGroups/methods';
+import '../../api/listingGroups/server/publications';
