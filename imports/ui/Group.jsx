@@ -19,30 +19,38 @@ const propTypes = {
   createMessage: PropTypes.func.isRequired,
 };
 
-function Group({ params , messages, group, users, listings, isLoading, createMessage }) {
-  const { groupId } = params;
-  return (
-    <div className={css(styles.page)}>
-      <div className={css(styles.row)}>
-        <h2>Choose a place, you'll stay at whichever has the most votes</h2>
-      </div>
-      <div className={css(styles.row)}>
-        <ListingsContainer listings={listings} />
-      </div>
-      <div className={css(styles.row)}>
-        <div className={css(styles.col)}>
-          <ChatContainer
-            messages={messages}
-            createMessage={(text) => createMessage(text, groupId)}
-            isLoading={isLoading}
-          />
+class Group extends React.Component {
+
+  componentDidMount() {
+    this.props.joinGroup();
+  }
+
+  render() {
+    const { params , messages, group, users, listings, isLoading, createMessage } = this.props;
+    const { groupId } = params;
+    return (
+      <div className={css(styles.page)}>
+        <div className={css(styles.row)}>
+          <h2>Choose a place, you'll stay at whichever has the most votes</h2>
         </div>
-        <div className={css(styles.col)}>
-          <UsersContainer users={users} />
+        <div className={css(styles.row)}>
+          <ListingsContainer listings={listings} />
+        </div>
+        <div className={css(styles.row)}>
+          <div className={css(styles.col)}>
+            <ChatContainer
+              messages={messages}
+              createMessage={(text) => createMessage(text, groupId)}
+              isLoading={isLoading}
+            />
+          </div>
+          <div className={css(styles.col)}>
+            <UsersContainer users={users} />
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 Group.propTypes = propTypes;
@@ -83,5 +91,6 @@ export default createContainer((props) => {
     users,
     listings,
     createMessage: (text, groupId) => Meteor.call('messages.create', text, groupId),
+    joinGroup: () => Meteor.call('userGroups.joinGroup', Meteor.userId(), groupId),
   };
 }, Group);
