@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
     position: 'relative',
     height: '100%',
     padding: '12px',
+    paddingBottom: 52,
     overflow: 'scroll',
   },
   footer: {
@@ -51,7 +52,8 @@ const styles = StyleSheet.create({
     height: 56,
     bottom: 0,
     padding: 12,
-    'border-top': '1px solid #edefed',
+    borderTop: '1px solid #edefed',
+    backgroundColor: '#ffffff',
   },
   messages: {
     position: 'relative',

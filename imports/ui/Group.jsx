@@ -34,6 +34,7 @@ class Group extends Component {
 
   render() {
     const {
+      createMessage,
       isLoading,
       params,
       messages,

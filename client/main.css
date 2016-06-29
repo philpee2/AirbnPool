@@ -53,6 +53,11 @@ h4 {
   font-family: 'Circular Light';
 }
 
+a {
+  font-family: 'Circular Book';
+}
+
+input,
 p,
 span {
   color: #757575;

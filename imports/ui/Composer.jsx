@@ -62,7 +62,12 @@ class Composer extends Component {
           onChange={this._onChange}
           value={this.state.text}
         />
-        <a className={css(styles.button)} href="#" onClick={this._onSendClick}>Send</a>
+        <a
+          className={css(styles.button)}
+          href="#"
+          onClick={this._onSendClick}>
+          Send
+        </a>
       </form>
     );
   }

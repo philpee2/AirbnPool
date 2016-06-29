@@ -10,7 +10,7 @@ export default function ChatMessage({ message, isSelf }) {
   return (
     <div className={css(styles.container)} key={message._id}>
       <div className={css(styles.bubble)}>
-        {message.text}
+        <span>{message.text}</span>
       </div>
       <div className={css(styles.imageContainer)}>
         <img
