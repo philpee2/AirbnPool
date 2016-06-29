@@ -6,9 +6,10 @@ const propTypes = {
     _id: PropTypes.string.isRequired,
     location: PropTypes.string.isRequired,
   }),
+  onVote: PropTypes.func.isRequired,
 };
 
-export default function ListingCard(props) {
+export default function ListingCard({ listing, onVote }) {
   const title = 'Boutique Retreat Bedroom';
   const reviewsCount = 5;
   return (
@@ -51,6 +52,7 @@ export default function ListingCard(props) {
             />
           </a>
         </div>
+        <button className={css(styles.voteButton)} onClick={onVote}>Vote</button>
       </div>
     </div>
   );
@@ -141,6 +143,10 @@ const styles = StyleSheet.create({
   userImage: {
     width: '100%',
   },
+  voteButton: {
+    backgroundColor: 'red',
+    color: 'white',
+  }
 });
 
 ListingCard.propTypes = propTypes;
