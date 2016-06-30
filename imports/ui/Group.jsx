@@ -69,7 +69,7 @@ class Group extends Component {
                 src={'http://icons.iconarchive.com/icons/custom-icon-design/silky-line-user/512/couple-icon.png'}
               />
               <span>
-                {`${totalUsers} guests viewing`}
+                {`${totalUsers} guest(s) viewing`}
               </span>
             </div>
           </div>
