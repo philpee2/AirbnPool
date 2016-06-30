@@ -15,7 +15,7 @@ export default function UserImageContainer({ user }) {
       <div className={css(styles.imageContainer)}>
         <img
           className={css(styles.image)}
-          src="https://avatars1.githubusercontent.com/u/2244653?v=3&s=460"
+          src={user.picture()}
         />
       </div>
 

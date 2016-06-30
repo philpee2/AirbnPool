@@ -34,7 +34,7 @@ export default function ChatMessage({ message, isSelf }) {
       <div className={css(...imageContainerStyles)}>
         <img
           className={css(styles.image)}
-          src="https://avatars1.githubusercontent.com/u/2244653?v=3&s=460"
+          src={message.author().picture()}
         />
       </div>
     </div>

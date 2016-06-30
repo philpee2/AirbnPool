@@ -38,3 +38,11 @@ Groups.helpers({
     return Votes.find({ groupId: this._id, userId });
   },
 });
+
+// TODO: Temporary hack to let us access a user's picture without hardcoding the same
+// URL everywhere
+Meteor.users.helpers({
+  picture() {
+    return this.pictureUrl || "https://avatars1.githubusercontent.com/u/2244653?v=3&s=460";
+  }
+})
