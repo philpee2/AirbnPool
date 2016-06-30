@@ -28,7 +28,6 @@ export default function ListingsContainer({
   allVotes,
   currentUserVotes,
 }) {
-  const sortedListings = sortBy(listings, listing => -getListingVotesValue(allVotes, listing._id));
   return (
     <div className={css(styles.wrapper)}>
       <div className={css(styles.header)}>
