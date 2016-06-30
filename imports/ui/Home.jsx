@@ -10,26 +10,42 @@ export default function App({ children }) {
         <h2 className={css(styles.subTitle)}>Share your experience with other Airbnb guests.</h2>
         <div className={css(styles.cta)}>
           <a href="#" className={css(styles.videoButton)}>Watch the video</a>
-          <a href="#" className={css(styles.howButton)}>How it works</a>
+          <a href="#" className={css(styles.howButton)}>How does it work?</a>
         </div>
       </div>
 
       <StartForm />
 
-      <h1 className={css(styles.marketingH1)}>Meet other travelers</h1>
-      <p>Something something about how awesome your life becomes</p>
+      <div className={css(styles.marketingWrapper)}>
+        <div className={css(styles.marketingContainer)}>
+          <div className={css(styles.marketingHeader)}>
+            <h1 className={css(styles.marketingH1)}>Travel is more fun with company</h1>
+            <p className={css(styles.marketingParagraph)}>
+              Something Airbnb something about how awesome your life becomes
+            </p>
+          </div>
 
-      <div className={css(styles.marketingSection1)}>
-        <h1 className={css(styles.marketingSectionH1)}>Why you should do it</h1>
-        <div className={css(styles.marketingTextLeft)}>Share hosting access to your listing</div>
-        <div className={css(styles.marketingImageRight)}><img src="" /></div>
+          <div className={css(styles.marketingSection)}>
+            <div className={css(styles.marketingTextLeft)}>
+              <h1 className={css(styles.marketingSectionH1)}>Why you should do it</h1>
+              <p className={css(styles.marketingParagraph)}>Share hosting access to your listing</p>
+              <a className={css(styles.marketingLink)} href="#">Learn more</a>
+            </div>
+            <div className={css(styles.marketingImageRight)}><img src="/images/placeholder.jpg" /></div>
+          </div>
+
+          <div className={css(styles.marketingSection)}>
+            <div className={css(styles.marketingImageLeft)}><img src="/images/placeholder.jpg" /></div>
+            <div className={css(styles.marketingTextRight)}>
+              <h1 className={css(styles.marketingSectionH1)}>Why you should do it</h1>
+              <p className={css(styles.marketingParagraph)}>Share hosting access to your listing</p>
+              <a className={css(styles.marketingLink)} href="#">Learn more</a>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className={css(styles.marketingSection2)}>
-        <h1 className={css(styles.marketingSectionH1)}>Why you should do it</h1>
-        <div className={css(styles.marketingImageLeft)}><img src="" /></div>
-        <div className={css(styles.marketingTextRight)}>Share hosting access to your listing</div>
-      </div>
+      <StartForm />
 
     </div>
   );
@@ -39,6 +55,7 @@ const styles = StyleSheet.create({
   wrapper: {
     position: 'relative',
     width: '100%',
+    paddingBottom: 100,
   },
   header: {
     background: `linear-gradient(
@@ -101,5 +118,89 @@ const styles = StyleSheet.create({
     textDecoration: 'none',
     textAlign: 'center',
     paddingTop: 12,
-  }
+  },
+  marketingWrapper: {
+    width: '100%',
+    minWidth: 954,
+    paddingTop: 82,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  marketingContainer: {
+    position: 'relative',
+    padding: '0 106px',
+    width: 954,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+  },
+  marketingHeader: {
+
+  },
+  marketingH1: {
+    fontFamily: 'Circular Medium',
+    fontSize: 44,
+    color: 'rgb(86, 90, 92)',
+    fontWeight: 400,
+    letterSpacing: '-0.83px',
+    lineHeight: '48px',
+  },
+  marketingSection: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    width: '100%',
+    borderBottom: '1px solid rgb(235, 235, 234)',
+    padding: '82px 0',
+  },
+  marketingTextLeft: {
+    flexGrow: 2,
+    order: 1,
+    display: 'inline-block',
+    fontSize: '18px',
+    ' p': {
+      fontSize: '18px',
+    }
+  },
+  marketingImageRight: {
+    flexGrow: 0,
+    order: 2,
+    display: 'inline-block',
+    padding: '0 0 0 100px',
+  },
+  marketingTextRight: {
+    flexGrow: 2,
+    order: 2,
+    display: 'inline-block',
+    fontSize: '18px',
+    ' p': {
+      fontSize: '18px',
+    }
+  },
+  marketingImageLeft: {
+    flexGrow: 0,
+    order: 1,
+    display: 'inline-block',
+    padding: '0 100px 0 0',
+    ' img': {
+      verticalAlign: 'middle',
+    },
+  },
+  marketingSectionH1: {
+    fontFamily: 'Circular Bold',
+    fontSize: '36px',
+    color: 'rgb(72, 72, 72)',
+    letterSpacing: '-0.45px',
+    lineHeight: '36px',
+  },
+  marketingParagraph: {
+    fontSize: '18px',
+    color: 'rgb(74, 74, 74)',
+  },
+  marketingLink: {
+    fontSize: '18px',
+  },
 });
