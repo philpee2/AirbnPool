@@ -25,6 +25,7 @@ export default function ListingCard({ listing, onVote, votingStatus, numVotes })
     reviews,
     title,
     type,
+    url,
   } = listing;
   const order = 10000 - (numVotes * 10);
   return (
@@ -46,9 +47,11 @@ export default function ListingCard({ listing, onVote, votingStatus, numVotes })
 
       <div className={css(styles.footer)}>
         <div className={css(styles.metadata)}>
-          <h4 className={css(styles.title)}>
-            {title}
-          </h4>
+          <a href={url} target='_blank'>
+            <h4 className={css(styles.title)}>
+              {title}
+            </h4>
+          </a>
           <div>
             <span>{type}</span>
             <span className={css(styles.middot)}>·</span>
