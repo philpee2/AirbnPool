@@ -24,9 +24,6 @@ const propTypes = {
 };
 
 class Group extends Component {
-  componentDidMount() {
-    this.props.joinGroup();
-  }
 
   render() {
     const {
