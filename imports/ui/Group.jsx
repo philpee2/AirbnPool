@@ -149,7 +149,6 @@ export default createContainer((props) => {
     allVotes,
     currentUserVotes,
     createMessage: (text) => Meteor.call('messages.create', text, groupId),
-    joinGroup: () => Meteor.call('userGroups.joinGroup', Meteor.userId(), groupId),
     onListingVote: (listingId) => Meteor.call('votes.create', listingId, groupId),
   };
 }, Group);
