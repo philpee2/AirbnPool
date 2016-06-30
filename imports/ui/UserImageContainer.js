@@ -7,21 +7,19 @@ import ExtraBedImageContainer from './ExtraBedImageContainer';
 
 const propTypes = {
   user: PropTypes.object.isRequired,
-  numBeds: PropTypes.number.isRequired,
 };
 
-export default function UserImageContainer({ user, numBeds }) {
+export default function UserImageContainer({ user }) {
   return (
     <div>
       <div className={css(styles.imageContainer)}>
         <img
           className={css(styles.image)}
-          src="http://www.clker.com/cliparts/t/m/P/U/D/m/letter-s-purple-hi.png"
+          src={user.picture()}
         />
-        {user.name}
       </div>
 
-      {range(numBeds-1).map(num => {
+      {range(user.numBeds-1).map(num => {
         return <ExtraBedImageContainer key={num} user={user} />;
       })}
     </div>
@@ -31,8 +29,7 @@ export default function UserImageContainer({ user, numBeds }) {
 const styles = StyleSheet.create({
   imageContainer: {
     position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
+    display: 'inline-block',
     justifyContent: 'flex-end',
     margin: 10,
   },

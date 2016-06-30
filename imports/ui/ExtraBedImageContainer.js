@@ -1,18 +1,13 @@
 import React, { PropTypes } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
-const propTypes = {
-  user: PropTypes.object.isRequired,
-};
-
-export default function ExtraBedImageContainer({ user }) {
+export default function ExtraBedImageContainer() {
   return (
     <div className={css(styles.imageContainer)}>
       <img
         className={css(styles.image)}
-        src="http://www.clker.com/cliparts/t/m/P/U/D/m/letter-s-purple-hi.png"
+        src="https://pbs.twimg.com/profile_images/698006458902958080/qwbpQ5PD_400x400.jpg"
       />
-      {user.name} +1
     </div>
   );
 }
@@ -20,8 +15,7 @@ export default function ExtraBedImageContainer({ user }) {
 const styles = StyleSheet.create({
   imageContainer: {
     position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
+    display: 'inline-block',
     justifyContent: 'flex-end',
     margin: 10,
   },
@@ -29,7 +23,6 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: '50%',
+    border: '1px solid black',
   },
 });
-
-ExtraBedImageContainer.propTypes = propTypes;
