@@ -33,7 +33,6 @@ export default function ListingsContainer({
   groupId,
   winningListing,
 }) {
-  console.log(listings);
   return (
     <div className={css(styles.wrapper)}>
       {!winningListing && (
