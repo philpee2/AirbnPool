@@ -22,9 +22,11 @@ const propTypes = {
   onListingVote: PropTypes.func.isRequired,
   allVotes: PropTypes.arrayOf(PropTypes.object).isRequired,
   currentUserVotes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  joinGroup: PropTypes.func.isRequired,
 };
 
 class Group extends Component {
+
   componentDidMount() {
     this.props.joinGroup();
   }
@@ -125,7 +127,8 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     width: '100%',
-    maxHeight: '100vh',
+    height: '100vh',
+    // maxHeight: '100vh',
   },
 });
 
@@ -158,7 +161,7 @@ export default createContainer((props) => {
     allVotes,
     currentUserVotes,
     createMessage: (text) => Meteor.call('messages.create', text, groupId),
-    joinGroup: () => Meteor.call('userGroups.joinGroup', Meteor.userId(), groupId),
     onListingVote: (listingId) => Meteor.call('votes.create', listingId, groupId),
+    joinGroup: () => Meteor.call('userGroups.joinGroup', Meteor.userId(), groupId),
   };
 }, Group);

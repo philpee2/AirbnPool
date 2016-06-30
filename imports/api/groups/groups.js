@@ -13,6 +13,7 @@ Groups.helpers({
   },
 
   listingGroups() {
+    // return ListingGroups.find({ groupId: this._id }, { sort: { voteCount: -1 } });
     return ListingGroups.find({ groupId: this._id });
   },
 
