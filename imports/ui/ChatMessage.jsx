@@ -28,8 +28,18 @@ export default function ChatMessage({ message, isSelf }) {
         </div>
       </div>
       {isSelf ?
-          <div className={css(styles.arrowSelf)}><img src="/images/green-chat-tail.png" width="6" /></div> :
-          <div className={css(styles.arrow)}><img src="/images/white-chat-tail.png" width="6" /></div>
+        (<div className={css(styles.arrowSelf)}>
+          <img
+            src={'/images/green-chat-tail.png'}
+            width={8}
+          />
+        </div>) :
+        (<div className={css(styles.arrow)}>
+          <img
+            src={'/images/white-chat-tail.png'}
+            width={8}
+          />
+        </div>)
       }
       <div className={css(...imageContainerStyles)}>
         <img

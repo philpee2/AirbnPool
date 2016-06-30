@@ -12,14 +12,18 @@ function VoteButton({ status, onClick }) {
       );
     case CANNOT_VOTE:
       return (
-        <button className={css(styles.disabledVoteButton)} disabled>
+        <button className={css(styles.disabled)} disabled>
           Vote
         </button>
       );
     case DID_VOTE:
       return (
         <div className={css(styles.checkmark)}>
-          &#9745;
+          <img
+            src={'/images/checkmark.png'}
+            width={16}
+            height={12}
+          />
         </div>
       );
   }
@@ -55,32 +59,31 @@ const styles = StyleSheet.create({
     paddingBottom: 6,
     paddingRight: 12,
     paddingLeft: 12,
-    transition: 'opacity 0.3s',
   },
   checkmark: {
-    padding: '1px 1px 2px 4px',
+    padding: '5px 6px 3px 6px',
     fontFamily: 'Circular Bold',
-    fontSize: 18,
     color: '#ffffff',
     backgroundColor: '#ff5a5f',
+    borderRadius: '50%',
   },
   container: {
     display: 'flex',
     justifyContent: 'space-between',
+    alignItems: 'center',
     position: 'relative',
     paddingTop: 6,
   },
-  disabledVoteButton: {
-    fontFamily: 'Circular Bold',
-    fontSize: 14,
-    color: '#ffffff',
-    border: 'none',
-    borderRadius: 15,
-    backgroundColor: '#dce0e0',
+  disabled: {
     paddingTop: 6,
     paddingBottom: 6,
     paddingRight: 12,
     paddingLeft: 12,
-    transition: 'opacity 0.3s',
+    color: '#ffffff',
+    fontFamily: 'Circular Bold',
+    fontSize: 14,
+    border: 'none',
+    borderRadius: 15,
+    backgroundColor: '#dce0e0',
   },
 });
