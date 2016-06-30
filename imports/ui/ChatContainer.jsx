@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     height: '100%',
     padding: '12px',
     overflow: 'scroll',
+    marginBottom: 100,
   },
   footer: {
     position: 'absolute',
@@ -66,6 +67,7 @@ const styles = StyleSheet.create({
     padding: 12,
     borderTop: '1px solid #edefed',
     backgroundColor: '#ffffff',
+    marginBottom: 100,
   },
   messages: {
     position: 'relative',
