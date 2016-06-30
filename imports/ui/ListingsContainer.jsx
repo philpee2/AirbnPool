@@ -3,7 +3,7 @@ import { StyleSheet, css } from 'aphrodite';
 
 import ListingCard from './ListingCard';
 import { CAN_VOTE, DID_VOTE, CANNOT_VOTE } from './constants/voting_status_constants';
-import { sumBy, sortBy } from 'lodash';
+import { sumBy } from 'lodash';
 
 const propTypes = {
   listings: PropTypes.array.isRequired,

@@ -26,7 +26,6 @@ export default function ListingCard({ listing, onVote, votingStatus, numVotes })
     title,
     type,
   } = listing;
-  const reviewsCount = 5;
   const order = 10000 - (numVotes * 10);
   return (
     <div className={css(styles.container)} style={{order}}>
