@@ -31,10 +31,12 @@ export default function ListingCard({ listing, onVote, votingStatus, numVotes })
   return (
     <div className={css(styles.container)} style={{order}}>
       <div className={css(styles.header)}>
-        <img
-          className={css(styles.image)}
-          src={preview}
-        />
+        <a href={listing.url}>
+          <img
+            className={css(styles.image)}
+            src={preview}
+          />
+        </a>
         <div className={css(styles.pricing)}>
           <h3 className={css(styles.price)}>
             {price}
