@@ -7,28 +7,19 @@ import ExtraBedImageContainer from './ExtraBedImageContainer';
 
 const propTypes = {
   user: PropTypes.object.isRequired,
-  numBeds: PropTypes.number.isRequired,
 };
 
-export default function UserImageContainer({ user, numBeds }) {
+export default function UserImageContainer({ user }) {
   return (
     <div>
       <div className={css(styles.imageContainer)}>
-        { (user._id == "1") &&
-          <img
+        <img
           className={css(styles.image)}
-          src="http://www.clker.com/cliparts/t/m/P/U/D/m/letter-s-purple-hi.png"
-          />
-        }
-        { (user._id == "2") &&
-          <img
-          className={css(styles.image)}
-          src="http://www.activityvillage.co.uk/sites/default/files/images/autumn_letter_t_460_0.jpg"
-          />
-        }
+          src="https://avatars1.githubusercontent.com/u/2244653?v=3&s=460"
+        />
       </div>
 
-      {range(numBeds-1).map(num => {
+      {range(user.numBeds-1).map(num => {
         return <ExtraBedImageContainer key={num} user={user} />;
       })}
     </div>
