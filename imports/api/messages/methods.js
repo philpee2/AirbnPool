@@ -33,12 +33,9 @@ Meteor.methods({
     const text = `${name} voted for ${listingName}!`;
     Meteor.call('messages.announce', text, groupId);
   },
-<<<<<<< HEAD
-=======
 
   'messages.winningListing'(listingName, groupId) {
     const text = `${listingName} has won the most votes! Enjoy your trip!`;
     Meteor.call('messages.announce', text, groupId);
   },
->>>>>>> d81011c79d6003135ecbf076e5abe28eec976006
 });
