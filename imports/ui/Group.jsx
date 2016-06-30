@@ -55,8 +55,12 @@ class Group extends Component {
               <h1>Airbnb Pool</h1>
               <h4>Trip to Tokyo, June 2nd to June 6th</h4>
             </div>
-            <div className={css(styles.col)}>
-              <h4>{totalUsers} Guests Viewing</h4>
+            <div className={css(styles.pullRight)}>
+              <img
+                className={css(styles.image)}
+                src="http://icons.iconarchive.com/icons/custom-icon-design/silky-line-user/512/couple-icon.png"
+              />
+              <div className={css(styles.numUsers)}>{totalUsers} Guests Viewing</div>
             </div>
           </div>
           <div className={css(styles.row, styles.expand)}>
@@ -130,6 +134,18 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100vh',
     // maxHeight: '100vh',
+  },
+  pullRight: {
+    float: 'right',
+    'padding-right': 30,
+  },
+  image: {
+    width: 30,
+    height: 30,
+    'margin-left': 15,
+  },
+  numUsers: {
+    width: 70,
   },
 });
 
