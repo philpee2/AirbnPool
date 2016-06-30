@@ -14,11 +14,18 @@ export default function UserImageContainer({ user, numBeds }) {
   return (
     <div>
       <div className={css(styles.imageContainer)}>
-        <img
+        { (user._id == "1") &&
+          <img
           className={css(styles.image)}
           src="http://www.clker.com/cliparts/t/m/P/U/D/m/letter-s-purple-hi.png"
-        />
-        {user.name}
+          />
+        }
+        { (user._id == "2") &&
+          <img
+          className={css(styles.image)}
+          src="http://www.activityvillage.co.uk/sites/default/files/images/autumn_letter_t_460_0.jpg"
+          />
+        }
       </div>
 
       {range(numBeds-1).map(num => {
@@ -31,8 +38,7 @@ export default function UserImageContainer({ user, numBeds }) {
 const styles = StyleSheet.create({
   imageContainer: {
     position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
+    display: 'inline-block',
     justifyContent: 'flex-end',
     margin: 10,
   },

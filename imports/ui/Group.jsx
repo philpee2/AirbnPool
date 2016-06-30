@@ -117,7 +117,7 @@ export default createContainer((props) => {
   const listings = isLoading ? [] : group.listings().fetch();
   const allVotes = isLoading ? [] : group.allVotes().fetch();
   const currentUserVotes = isLoading ? [] : group.votesForUser(Meteor.userId()).fetch();
-  const numBeds = [2, 4]; // todo: get from group
+  const numBeds = [2, 3]; // todo: get from group
   return {
     messages,
     isLoading,

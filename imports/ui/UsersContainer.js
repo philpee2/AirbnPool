@@ -14,8 +14,8 @@ export default function UsersContainer({ users, numBeds }) {
   const remains = 8 - sum(numBeds);
   return (
     <div className={css(styles.container)}>
-      { (remains > 0) &&
-        <div className={css(styles.header)}> We need {remains} more! </div> }
+      {/* (remains > 0) &&
+        <div className={css(styles.header)}> We need {remains} more! </div> */}
 
       {users.map( (user, index) => {
         // Also include extra beds for this user
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   container: {
     position: 'relative',
     display: 'flex',
-    padding: '12px',
+    // padding: '12px',
     border: '1px solid #dce0e0',
   },
   header: {
