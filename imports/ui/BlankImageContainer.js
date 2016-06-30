@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: '50%',
     border: '2px dashed #ececec',
-    margin: 10,
+    margin: 5,
   },
 });
 

@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     position: 'relative',
     display: 'inline-block',
     justifyContent: 'flex-end',
-    margin: 10,
+    margin: 5,
     backgroundColor: 'rgb(4, 157, 145)',
     color: 'white',
     borderRadius: '50%',
