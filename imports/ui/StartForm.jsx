@@ -38,7 +38,7 @@ class StartForm extends Component {
                 className={css(styles.location)}
                 type="text"
                 name="location"
-                placeholder="Tokyo"
+                placeholder="Edinburgh"
               />
             </div>
           </div>
@@ -57,6 +57,9 @@ class StartForm extends Component {
                 <option value="July 5">July 5</option>
                 <option value="July 6">July 6</option>
                 <option value="July 7">July 7</option>
+                <option value="July 8">July 8</option>
+                <option value="July 9">July 9</option>
+                <option value="July 10">July 10</option>
               </select>
             </div>
           </div>
@@ -76,6 +79,9 @@ class StartForm extends Component {
                 <option value="July 5">July 5</option>
                 <option value="July 6">July 6</option>
                 <option value="July 7">July 7</option>
+                <option value="July 8">July 8</option>
+                <option value="July 9">July 9</option>
+                <option value="July 10">July 10</option>
               </select>
             </div>
           </div>
@@ -94,6 +100,9 @@ class StartForm extends Component {
                 <option value={4}>4 Beds</option>
                 <option value={5}>5 Beds</option>
                 <option value={6}>6 Beds</option>
+                <option value={7}>7 Beds</option>
+                <option value={8}>8 Beds</option>
+                <option value={9}>9 Beds</option>
               </select>
             </div>
           </div>
@@ -201,6 +210,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: 300,
     color: 'rgb(136, 136, 136)',
+    outline: 'none',
   },
   location: {
     flexGrow: 0,
