@@ -3,14 +3,17 @@ import { Votes } from './votes';
 
 Meteor.methods({
   'votes.create'(listingId, groupId) {
-    if (!this.userId) {
+    const userId = Meteor.userId();
+    if (!userId) {
       throw new Meteor.Error('not-authorized');
     }
+
+    Meteor.call('userGroups.joinGroup', userId, groupId);
 
     Votes.insert({
       listingId,
       groupId,
-      userId: Meteor.userId(),
+      userId,
       createdAt: new Date(),
     });
   }
