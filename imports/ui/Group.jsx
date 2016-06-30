@@ -20,6 +20,7 @@ const propTypes = {
   onListingVote: PropTypes.func.isRequired,
   allVotes: PropTypes.arrayOf(PropTypes.object).isRequired,
   currentUserVotes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  numBeds: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
 
 class Group extends Component {
@@ -38,6 +39,7 @@ class Group extends Component {
       allVotes,
       currentUserVotes,
       listings,
+      numBeds,
     } = this.props;
     const { groupId } = params;
     return (
@@ -49,7 +51,7 @@ class Group extends Component {
           </div>
         </div>
         <div className={css(styles.row)}>
-          <UsersContainer users={users} />
+          <UsersContainer users={users} numBeds={numBeds} />
         </div>
         <div className={css(styles.row)}>
           <div className={css(styles.col)}>
@@ -108,6 +110,7 @@ export default createContainer((props) => {
   const listings = isLoading ? [] : group.listings().fetch();
   const allVotes = isLoading ? [] : group.allVotes().fetch();
   const currentUserVotes = isLoading ? [] : group.votesForUser(Meteor.userId()).fetch();
+  const numBeds = [2, 4]; // todo: get from group
   return {
     messages,
     isLoading,
@@ -119,5 +122,6 @@ export default createContainer((props) => {
     createMessage: (text) => Meteor.call('messages.create', text, groupId),
     joinGroup: () => Meteor.call('userGroups.joinGroup', Meteor.userId(), groupId),
     onListingVote: (listingId) => Meteor.call('votes.create', listingId, groupId),
+    numBeds,
   };
 }, Group);
