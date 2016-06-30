@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     overflow: 'hidden',
     right: 0,
-    bottom: 72,
+    bottom: 96,
     borderRadius: '50%',
     border: '2px solid #fff',
     width: 56,
