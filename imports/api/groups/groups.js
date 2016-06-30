@@ -39,10 +39,24 @@ Groups.helpers({
   },
 });
 
-// TODO: Temporary hack to let us access a user's picture without hardcoding the same
-// URL everywhere
+// Hardcoded for hackathon YOLO
 Meteor.users.helpers({
   picture() {
-    return this.pictureUrl || "https://avatars1.githubusercontent.com/u/2244653?v=3&s=460";
+    switch(this.emails[0].address) {
+      // Images come from here https://github.com/philpee2/AirbnPool/issues/21
+      case 'phil.nachum@airbnb.com':
+        return 'https://cloud.githubusercontent.com/assets/2244653/16473858/408afb56-3e26-11e6-96fe-06f66311920b.png';
+      case 'michael.lawlor@airbnb.com':
+        return 'https://cloud.githubusercontent.com/assets/295574/16468692/035d1ada-3e02-11e6-99bb-683b5ce64935.jpg';
+      case 'warren.shen@airbnb.com':
+        return 'https://cloud.githubusercontent.com/assets/8787796/16472729/39547fc0-3e1b-11e6-96bd-7e0af75f4f15.png';
+      case 'sherry.huang@airbnb.com':
+        return 'https://a0.muscache.com/ac/users/43813704/profile_pic/1441847640/original.jpg?interpolation=lanczos-none&crop=w:w;*,*&crop=h:h;*,*&resize=225:*&output-format=jpg&output-quality=70';
+      case 'poyan.pourshian@airbnb.com':
+        return 'https://a2.muscache.com/ac/pictures/ff143fed-123a-4ee7-a18d-6ad471df04ad.jpg?interpolation=lanczos-none&size=large&output-format=jpg&output-quality=70';
+      default:
+        // Airbnb logo
+        return 'http://www.doz.com/cms/wp-content/uploads/2015/03/airbnb-logo.png';
+    }
   }
 })
