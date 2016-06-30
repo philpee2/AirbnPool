@@ -1,16 +1,27 @@
 import React, { PropTypes } from 'react';
 import { StyleSheet, css } from 'aphrodite';
+import { sum } from 'lodash';
+
+import UserImageContainer from './UserImageContainer';
+import BlankImageContainer from './BlankImageContainer';
 
 const propTypes = {
   users: PropTypes.arrayOf(PropTypes.object).isRequired,
+  numBeds: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
 
-export default function UsersContainer({ users }) {
+export default function UsersContainer({ users, numBeds }) {
   return (
     <div className={css(styles.container)}>
-      {users.map(user => {
-        return <div key={user}>{user._id}</div>;
-      })}
+      { (remains > 0) &&
+        <div className={css(styles.header)}> We need {remains} more! </div> }
+
+      {users.map( (user, index) => {
+        // Also include extra beds for this user
+        return <UserImageContainer key={user._id} user={user} numBeds={numBeds[index]} />;
+       })}
+
+      { (remains > 0) && <BlankImageContainer remains={remains} /> }
     </div>
   );
 }
@@ -21,6 +32,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     padding: '12px',
     border: '1px solid #dce0e0',
+  },
+  header: {
+    'font-size': '20px',
+    padding: '12px',
   },
 });
 
