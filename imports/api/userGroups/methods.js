@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { UserGroups } from './userGroups';
+import { Groups } from '../groups/groups';
 
 Meteor.methods({
   'userGroups.joinGroup'(userId, groupId, numBeds = 1) {
@@ -12,6 +13,14 @@ Meteor.methods({
       });
 
       const userName = Meteor.users.findOne(userId).name();
+
+      // TODO: Hack to get the publication to update. Without this, the following bug exists:
+      // User 1 joins the group
+      // User 2 joins the group. User 1's client is not aware of this
+      // User 2 sends a message
+      // User 1's client cannot display User 2's picture
+      Groups.update({ _id: groupId }, { $set: { updatedAt: new Date() } });
+
       Meteor.call('messages.userJoined', userName, groupId);
     }
   },
