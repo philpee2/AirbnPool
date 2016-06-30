@@ -23,6 +23,7 @@ const propTypes = {
   allVotes: PropTypes.arrayOf(PropTypes.object).isRequired,
   currentUserVotes: PropTypes.arrayOf(PropTypes.object).isRequired,
   joinGroup: PropTypes.func.isRequired,
+  winningListing: PropTypes.object,
 };
 
 class Group extends Component {
@@ -44,6 +45,7 @@ class Group extends Component {
       currentUserVotes,
       listings,
       numBeds,
+      winningListing,
     } = this.props;
     const { groupId } = params;
     return (
@@ -84,6 +86,7 @@ class Group extends Component {
                   allVotes={allVotes}
                   currentUserVotes={currentUserVotes}
                   groupId={groupId}
+                  winningListing={winningListing}
                 />
               </div>
             </div>
@@ -168,6 +171,8 @@ export default createContainer((props) => {
     const numBeds = userGroups.find(userGroup => userGroup.userId === user._id).numBeds;
     return Object.assign(user, { numBeds });
   });
+
+  const winningListing = isLoading ? null : group.winningListing();
   return {
     messages,
     isLoading,
@@ -177,6 +182,7 @@ export default createContainer((props) => {
     listings,
     allVotes,
     currentUserVotes,
+    winningListing,
     createMessage: (text) => Meteor.call('messages.create', text, groupId),
     onListingVote: (listingId) => Meteor.call('votes.create', listingId, groupId),
     joinGroup: () => Meteor.call('userGroups.joinGroup', Meteor.userId(), groupId),

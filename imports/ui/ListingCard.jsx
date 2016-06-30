@@ -14,9 +14,16 @@ const propTypes = {
   onVote: PropTypes.func.isRequired,
   numVotes: PropTypes.number.isRequired,
   votingStatus: PropTypes.oneOf([CAN_VOTE, DID_VOTE, CANNOT_VOTE]).isRequired,
+  disabled: PropTypes.bool.isRequired,
 };
 
-export default function ListingCard({ listing, onVote, votingStatus, numVotes }) {
+export default function ListingCard({
+  listing,
+  onVote,
+  votingStatus,
+  numVotes,
+  disabled,
+}) {
   const {
     hostImage,
     location,
@@ -28,8 +35,13 @@ export default function ListingCard({ listing, onVote, votingStatus, numVotes })
     url,
   } = listing;
   const order = 10000 - (numVotes * 10);
+
+  const containerStyles = [styles.container];
+  if (disabled) {
+    containerStyles.push(styles.disabledContainer);
+  }
   return (
-    <div className={css(styles.container)} style={{order}}>
+    <div className={css(...containerStyles)} style={{order}}>
       <div className={css(styles.header)}>
         <a href={listing.url}>
           <img
@@ -85,6 +97,9 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     border: '1px solid #dce0e0',
     transition: 'order 250ms ease',
+  },
+  disabledContainer: {
+    opacity: 0.3,
   },
   footer: {
     display: 'flex',
