@@ -104,7 +104,6 @@ const styles = StyleSheet.create({
     flex: 1,
     position: 'relative',
     paddingBottom: 52,
-    borderTop: '1px solid #dce0e0',
     borderRight: '1px solid #dce0e0',
   },
 });

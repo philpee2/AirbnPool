@@ -118,7 +118,8 @@ const styles = StyleSheet.create({
     padding: '0 10px',
   },
   form: {
-
+    display: 'flex',
+    alignItems: 'center',
   },
   input: {
     width: '90%',
@@ -131,13 +132,9 @@ const styles = StyleSheet.create({
     outline: 0,
   },
   button: {
-    display: 'inline-block',
-    position: 'absolute',
-    right: 12,
-    top: 6,
     fontSize: 18,
     fontFamily: 'Circular Medium',
     color: 'rgb(4, 157, 145)',
-    'text-decoration': 'none',
+    textDecoration: 'none',
   }
 });

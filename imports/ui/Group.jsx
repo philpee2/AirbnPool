@@ -59,16 +59,18 @@ class Group extends Component {
         <Header />
         <div className={css(styles.page)}>
           <div className={css(styles.header)}>
-            <div className={css(styles.col)}>
+            <div className={css(styles.col, styles.expand)}>
               <h1>Airbnb Pool</h1>
-              <h4>Trip to Tokyo, June 2nd to June 6th</h4>
+              <h3>Trip to Edinburgh, June 2nd to June 6th</h3>
             </div>
-            <div className={css(styles.pullRight)}>
+            <div className={css(styles.viewers)}>
               <img
                 className={css(styles.image)}
-                src="http://icons.iconarchive.com/icons/custom-icon-design/silky-line-user/512/couple-icon.png"
+                src={'http://icons.iconarchive.com/icons/custom-icon-design/silky-line-user/512/couple-icon.png'}
               />
-              <div className={css(styles.numUsers)}>{totalUsers} Guests Viewing</div>
+              <span>
+                {`${totalUsers} guests viewing`}
+              </span>
             </div>
           </div>
           <div className={css(styles.row, styles.expand)}>
@@ -126,6 +128,11 @@ const styles = StyleSheet.create({
     paddingBottom: 24,
     borderBottom: '1px solid #dce0e0',
   },
+  image: {
+    width: 30,
+    height: 30,
+    'margin-left': 15,
+  },
   padding: {
     paddingLeft: 12,
   },
@@ -141,24 +148,16 @@ const styles = StyleSheet.create({
     display: 'flex',
     position: 'relative',
   },
+  viewers: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
   wrapper: {
     display: 'flex',
     flexDirection: 'column',
     width: '100%',
     height: '100vh',
-    // maxHeight: '100vh',
-  },
-  pullRight: {
-    float: 'right',
-    'padding-right': 30,
-  },
-  image: {
-    width: 30,
-    height: 30,
-    'margin-left': 15,
-  },
-  numUsers: {
-    width: 70,
   },
 });
 

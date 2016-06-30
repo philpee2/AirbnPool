@@ -32,6 +32,9 @@ const styles = StyleSheet.create({
     position: 'relative',
     width: '100%',
     borderRight: '1px solid #dce0e0',
+    borderBottom: '1px solid #dce0e0',
+    boxShadow: '0px 8px 16px #ffffff',
+    zIndex: 2,
   },
   header: {
     position: 'relative',
