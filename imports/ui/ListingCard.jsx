@@ -16,7 +16,7 @@ const propTypes = {
   votingStatus: PropTypes.oneOf([CAN_VOTE, DID_VOTE, CANNOT_VOTE]).isRequired,
 };
 
-export default function ListingCard({ listing, onVote, votingStatus, numVotes }) {
+export default function ListingCard({ listing, onVote, votingStatus, numVotes, order }) {
   const {
     hostImage,
     location,
@@ -27,8 +27,13 @@ export default function ListingCard({ listing, onVote, votingStatus, numVotes })
     type,
   } = listing;
   const reviewsCount = 5;
+  const dynamicStyles = StyleSheet.create({
+    container: {
+      order,
+    }
+  });
   return (
-    <div className={css(styles.container)}>
+    <div className={css(styles.container, dynamicStyles.container)}>
       <div className={css(styles.header)}>
         <img
           className={css(styles.image)}
