@@ -36,9 +36,11 @@ export default function ListingsContainer({
   console.log(listings);
   return (
     <div className={css(styles.wrapper)}>
-      <div className={css(styles.header)}>
-        <h2>Vote on a listing to join</h2>
-      </div>
+      {!winningListing && (
+        <div className={css(styles.header)}>
+          <h2>Vote on a listing to join</h2>
+        </div>
+      )}
       <div className={css(styles.container)}>
         {listings.map(listing => (
           <ListingCard
