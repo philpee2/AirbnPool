@@ -16,6 +16,7 @@ Meteor.startup(() => {
 
   Listings.insert({
     _id: '1',
+    hostImage: 'https://a0.muscache.com/im/users/2948538/profile_pic/1342408706/original.jpg?aki_policy=profile_x_medium',
     location: 'Portland',
     preview: 'https://a1.muscache.com/im/pictures/786471e1-0618-48f3-b917-c3f2fb0631d1.jpg?aki_policy=x_medium',
     price: '$55',
@@ -25,6 +26,7 @@ Meteor.startup(() => {
   });
   Listings.insert({
     _id: '2',
+    hostImage: 'https://a2.muscache.com/im/pictures/649c9f4c-c1b5-49ac-833f-354e84abbc3a.jpg?aki_policy=profile_x_medium',
     location: 'Shanghai',
     preview: 'https://a2.muscache.com/im/pictures/0a35bd8f-bcc8-4a55-977a-2ed35550bd4d.jpg?aki_policy=xx_large',
     price: '$33',
