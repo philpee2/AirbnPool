@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     width: '100%',
-    maxHeight: '100vh',
+    height: '100vh',
   },
 });
 
