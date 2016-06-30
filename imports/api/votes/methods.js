@@ -9,8 +9,6 @@ Meteor.methods({
       throw new Meteor.Error('not-authorized');
     }
 
-    Meteor.call('userGroups.joinGroup', userId, groupId);
-
     Votes.insert({
       listingId,
       groupId,

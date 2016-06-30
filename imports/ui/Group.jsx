@@ -21,9 +21,14 @@ const propTypes = {
   onListingVote: PropTypes.func.isRequired,
   allVotes: PropTypes.arrayOf(PropTypes.object).isRequired,
   currentUserVotes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  joinGroup: PropTypes.func.isRequired,
 };
 
 class Group extends Component {
+
+  componentDidMount() {
+    this.props.joinGroup();
+  }
 
   render() {
     const {
@@ -151,5 +156,6 @@ export default createContainer((props) => {
     currentUserVotes,
     createMessage: (text) => Meteor.call('messages.create', text, groupId),
     onListingVote: (listingId) => Meteor.call('votes.create', listingId, groupId),
+    joinGroup: () => Meteor.call('userGroups.joinGroup', Meteor.userId(), groupId),
   };
 }, Group);
