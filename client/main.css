@@ -81,3 +81,22 @@ span {
   font-size: 14px;
 }
 
+.page-transition-enter {
+  transition: opacity .3s ease-in-out;
+  opacity: 0;
+  position: absolute;
+}
+
+.page-transition-enter.page-transition-enter-active {
+  opacity: 1;
+}
+
+.page-transition-leave {
+  transition: opacity .3s ease-in-out;
+  opacity: 1;
+  position: absolute;
+}
+
+.page-transition-leave.page-transition-leave-active {
+  opacity: 0;
+}

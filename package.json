@@ -12,6 +12,7 @@
     "react-addons-pure-render-mixin": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-router": "^2.5.1",
+    "react-router-transition": "0.0.5",
     "react-timeago": "^3.0.0"
   }
 }

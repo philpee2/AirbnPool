@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import Loader from './Loader';
 import Header from './Header';
 import ChatContainer from './ChatContainer';
 import ListingsContainer from './ListingsContainer';
@@ -47,6 +48,11 @@ class Group extends Component {
       numBeds,
       winningListing,
     } = this.props;
+
+    if (isLoading) {
+      return this.renderLoader();
+    }
+
     const { groupId } = params;
     return (
       <div className={css(styles.wrapper)}>
@@ -94,6 +100,10 @@ class Group extends Component {
         </div>
       </div>
     );
+  }
+
+  renderLoader() {
+    return <Loader />;
   }
 }
 

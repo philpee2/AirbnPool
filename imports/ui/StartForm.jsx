@@ -122,7 +122,10 @@ class StartForm extends Component {
     const groupId = '1';
 
     this.props.submitForm(groupId, this.state.numBeds);
-    this.context.router.push(`/groups/${groupId}`);
+    this.context.router.push(`/loader`);
+    setTimeout(() => {
+      this.context.router.push(`/groups/${groupId}`);
+    }, 6000);
   }
 }
 
