@@ -19,9 +19,9 @@ function generateBlocks(messages, id) {
     return blocks;
   }
   let currentBlock = [];
-  let lastId = messages[0].author()._id;
+  let lastId = messages[0].userId;
   messages.map(message => {
-    const currentId = message.author()._id;
+    const currentId = message.userId;
     if (currentId === lastId) {
       currentBlock.push(message);
     } else {
@@ -53,7 +53,7 @@ export default class ChatContainer extends Component {
         <div className={css(styles.container)} ref={'scrollable'}>
           <div className={css(styles.messages)}>
             {blocks.map(block =>
-              block[0].author()._id === currentUserId ?
+              block[0].userId === currentUserId ?
               <SelfChatMessages key={block[0]._id} messages={block} /> :
               <OtherChatMessages key={block[0]._id} messages={block} />
             )}
