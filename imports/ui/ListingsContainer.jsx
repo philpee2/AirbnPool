@@ -29,6 +29,7 @@ export default function ListingsContainer({
   currentUserVotes,
   groupId,
 }) {
+  console.log(listings);
   return (
     <div className={css(styles.wrapper)}>
       <div className={css(styles.header)}>
@@ -61,14 +62,14 @@ const styles = StyleSheet.create({
   header: {
     position: 'relative',
     padding: '24px 0px',
-    height: 75
   },
   wrapper: {
     display: 'flex',
     flexDirection: 'column',
     position: 'relative',
     width: '100%',
-  }
+    paddingBottom: 96,
+  },
 });
 
 ListingsContainer.propTypes = propTypes;

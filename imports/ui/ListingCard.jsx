@@ -18,7 +18,7 @@ const propTypes = {
 
 export default function ListingCard({ listing, onVote, votingStatus, numVotes }) {
   const {
-    hostImage,
+    host,
     location,
     preview,
     price,
@@ -31,10 +31,12 @@ export default function ListingCard({ listing, onVote, votingStatus, numVotes })
   return (
     <div className={css(styles.container)} style={{order}}>
       <div className={css(styles.header)}>
-        <img
-          className={css(styles.image)}
-          src={preview}
-        />
+        <a href={url} target='_blank'>
+          <img
+            className={css(styles.image)}
+            src={preview}
+          />
+        </a>
         <div className={css(styles.pricing)}>
           <h3 className={css(styles.price)}>
             {price}
@@ -56,14 +58,18 @@ export default function ListingCard({ listing, onVote, votingStatus, numVotes })
             <span>{type}</span>
             <span className={css(styles.middot)}>·</span>
             <span>{`${reviews} reviews`}</span>
+            <span className={css(styles.middot)}>·</span>
+            <span>{location}</span>
           </div>
         </div>
 
         <div className={css(styles.profile)}>
-          <img
-            className={css(styles.user)}
-            src={hostImage}
-          />
+          <a href={host.url} target='_blank'>
+            <img
+              className={css(styles.user)}
+              src={host.image}
+            />
+          </a>
         </div>
         <ListingBallot
           numVotes={numVotes}
@@ -90,6 +96,7 @@ const styles = StyleSheet.create({
     position: 'relative',
     padding: 12,
     backgroundColor: '#ffffff',
+    borderBottom: '1px solid #dce0e0',
   },
   header: {
     position: 'relative',
@@ -130,15 +137,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     overflow: 'hidden',
     right: 0,
-    bottom: 64,
+    bottom: 72,
     borderRadius: '50%',
     border: '2px solid #fff',
     width: 56,
     height: 56,
-  },
-  statistics: {
-    display: 'flex',
-    justifyContent: 'space-between',
   },
   title: {
     whiteSpace: 'nowrap',
