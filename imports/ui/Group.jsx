@@ -44,7 +44,7 @@ class Group extends Component {
     } = this.props;
     const { groupId } = params;
     return (
-      <div className={css(styles.pageContainer)}>
+      <div className={css(styles.wrapper)}>
         <Header />
         <div className={css(styles.page)}>
           <div className={css(styles.row)}>
@@ -53,24 +53,28 @@ class Group extends Component {
               <h4>Trip to Tokyo, June 2nd to June 6th</h4>
             </div>
           </div>
-          <div className={css(styles.row)}>
-            <UsersContainer users={users} numBeds={numBeds} />
-          </div>
-          <div className={css(styles.row)}>
+          <div className={css(styles.row, styles.expand)}>
             <div className={css(styles.col)}>
-              <ChatContainer
-                messages={messages}
-                createMessage={(text) => createMessage(text, groupId)}
-                isLoading={isLoading}
-              />
+              <div className={css(styles.row)}>
+                <UsersContainer users={users} numBeds={numBeds} />
+              </div>
+              <div className={css(styles.row, styles.expand)}>
+                <ChatContainer
+                  messages={messages}
+                  createMessage={(text) => createMessage(text, groupId)}
+                  isLoading={isLoading}
+                />
+              </div>
             </div>
             <div className={css(styles.col, styles.padding)}>
-              <ListingsContainer
-                listings={listings}
-                onListingVote={onListingVote}
-                allVotes={allVotes}
-                currentUserVotes={currentUserVotes}
-              />
+              <div className={css(styles.row)}>
+                <ListingsContainer
+                  listings={listings}
+                  onListingVote={onListingVote}
+                  allVotes={allVotes}
+                  currentUserVotes={currentUserVotes}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -84,26 +88,36 @@ Group.propTypes = propTypes;
 const styles = StyleSheet.create({
   col: {
     position: 'relative',
-    display: 'inline-block',
+    display: 'flex',
+    flexDirection: 'column',
     flex: 1,
     width: '50%',
     boxSizing: 'border-box',
   },
+  expand: {
+    flex: 1,
+  },
   padding: {
     paddingLeft: 12,
   },
-  pageContainer: {
-    width: '100%',
-  },
   page: {
+    display: 'flex',
+    flexDirection: 'column',
+    flex: 1,
     position: 'relative',
     width: 712,
     margin: 'auto',
   },
   row: {
-    position: 'relative',
     display: 'flex',
+    position: 'relative',
     paddingBottom: 24,
+  },
+  wrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%',
+    height: '100vh',
   },
 });
 

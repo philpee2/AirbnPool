@@ -16,8 +16,8 @@ const styles = StyleSheet.create({
     display: 'flex',
   },
   wrapper: {
-    position: 'relative',
     display: 'flex',
     flexDirection: 'column',
+    position: 'relative',
   },
 });

@@ -72,23 +72,10 @@ export default function ListingCard({ listing, onVote, votingStatus, numVotes })
 }
 
 const styles = StyleSheet.create({
-  button: {
-    fontFamily: 'Circular Bold',
-    fontSize: 14,
-    color: '#ffffff',
-    border: 'none',
-    borderRadius: 2,
-    backgroundColor: '#ff5a5f',
-    cursor: 'pointer',
-    paddingTop: 6,
-    paddingBottom: 6,
-    paddingRight: 12,
-    paddingLeft: 12,
-    transition: 'opacity 0.3s',
-  },
   container: {
-    position: 'relative',
     flex: 1,
+    position: 'relative',
+    width: '100%',
     marginBottom: 12,
     border: '1px solid #dce0e0',
   },
@@ -98,7 +85,6 @@ const styles = StyleSheet.create({
     position: 'relative',
     padding: 12,
     backgroundColor: '#ffffff',
-    borderBottom: '1px solid #dce0e0',
   },
   header: {
     position: 'relative',
@@ -156,22 +142,6 @@ const styles = StyleSheet.create({
   },
   user: {
     width: '100%',
-  },
-  votedIcon: {
-    backgroundColor: 'red',
-  },
-  disabledVoteButton: {
-    fontFamily: 'Circular Bold',
-    fontSize: 14,
-    color: '#ffffff',
-    border: 'none',
-    borderRadius: 2,
-    backgroundColor: '#dce0e0',
-    paddingTop: 6,
-    paddingBottom: 6,
-    paddingRight: 12,
-    paddingLeft: 12,
-    transition: 'opacity 0.3s',
   },
 });
 

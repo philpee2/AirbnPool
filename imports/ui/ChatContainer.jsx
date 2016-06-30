@@ -74,8 +74,10 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   wrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    flex: 1,
     position: 'relative',
-    height: 712,
     paddingBottom: 52,
     border: '1px solid #dce0e0',
   },

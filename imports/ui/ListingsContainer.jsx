@@ -38,7 +38,7 @@ export default function ListingsContainer({
   currentUserVotes,
 }) {
   return (
-    <div>
+    <div className={css(styles.wrapper)}>
       <h2>Vote on a listing to join Pool</h2>
       <div className={css(styles.container)}>
         {listings.map(listing => (
@@ -57,12 +57,17 @@ export default function ListingsContainer({
 
 const styles = StyleSheet.create({
   container: {
-    position: 'relative',
     display: 'flex',
     flexDirection: 'column',
+    position: 'relative',
     width: '100%',
-    height: 256,
   },
+  wrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    position: 'relative',
+    width: '100%',
+  }
 });
 
 ListingsContainer.propTypes = propTypes;
