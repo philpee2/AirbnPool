@@ -3,7 +3,7 @@ import { StyleSheet, css } from 'aphrodite';
 
 import ListingCard from './ListingCard';
 import { CAN_VOTE, DID_VOTE, CANNOT_VOTE } from './constants/voting_status_constants';
-import { sumBy } from 'lodash';
+import { sumBy, sortBy } from 'lodash';
 
 const propTypes = {
   listings: PropTypes.array.isRequired,
@@ -28,6 +28,7 @@ export default function ListingsContainer({
   allVotes,
   currentUserVotes,
 }) {
+  const sortedListings = sortBy(listings, listing => -getListingVotesValue(allVotes, listing._id));
   return (
     <div className={css(styles.wrapper)}>
       <div className={css(styles.header)}>

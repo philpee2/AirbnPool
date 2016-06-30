@@ -16,7 +16,7 @@ const propTypes = {
   votingStatus: PropTypes.oneOf([CAN_VOTE, DID_VOTE, CANNOT_VOTE]).isRequired,
 };
 
-export default function ListingCard({ listing, onVote, votingStatus, numVotes }) {
+export default function ListingCard({ listing, onVote, votingStatus, numVotes, order }) {
   const {
     hostImage,
     location,
