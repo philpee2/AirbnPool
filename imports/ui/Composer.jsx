@@ -50,7 +50,7 @@ class Composer extends Component {
   renderInput() {
     return (
       <form className={css(styles.form)} onSubmit={this._onSubmit}>
-        <textarea
+        <input
           ref={this._setRef}
           className={css(styles.input)}
           autoComplete="off"
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     width: '90%',
     height: 50,
     resize: 'none',
-    // padding: '0 40px 0 0',
+    paddingRight: 35,
     margin: 0,
     fontSize: 18,
     border: 0,
