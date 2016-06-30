@@ -46,14 +46,14 @@ class Group extends Component {
       <div className={css(styles.wrapper)}>
         <Header />
         <div className={css(styles.page)}>
-          <div className={css(styles.row)}>
+          <div className={css(styles.header)}>
             <div className={css(styles.col)}>
               <h1>Airbnb Pool</h1>
               <h4>Trip to Tokyo, June 2nd to June 6th</h4>
             </div>
           </div>
           <div className={css(styles.row, styles.expand)}>
-            <div className={css(styles.col)}>
+            <div className={css(styles.col, styles.expand)}>
               <div className={css(styles.row)}>
                 <UsersContainer users={users} numBeds={numBeds} />
               </div>
@@ -90,11 +90,16 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     flex: 1,
-    width: '50%',
     boxSizing: 'border-box',
   },
   expand: {
-    flex: 1,
+    flex: 2,
+  },
+  header: {
+    display: 'flex',
+    position: 'relative',
+    paddingBottom: 24,
+    borderBottom: '1px solid #dce0e0',
   },
   padding: {
     paddingLeft: 12,
@@ -104,13 +109,12 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     flex: 1,
     position: 'relative',
-    width: 712,
+    width: 872,
     margin: 'auto',
   },
   row: {
     display: 'flex',
     position: 'relative',
-    paddingBottom: 24,
   },
   wrapper: {
     display: 'flex',

@@ -28,14 +28,15 @@ export default function UsersContainer({ users }) {
 
 const styles = StyleSheet.create({
   container: {
-    position: 'relative',
     display: 'flex',
-    // padding: '12px',
-    border: '1px solid #dce0e0',
+    position: 'relative',
+    width: '100%',
+    borderRight: '1px solid #dce0e0',
   },
   header: {
-    'font-size': '20px',
+    position: 'relative',
     padding: '12px',
+    fontSize: '18px',
   },
 });
 

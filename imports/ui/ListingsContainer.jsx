@@ -39,7 +39,9 @@ export default function ListingsContainer({
 }) {
   return (
     <div className={css(styles.wrapper)}>
-      <h2>Vote on a listing to join Pool</h2>
+      <div className={css(styles.header)}>
+        <h2>Vote on a listing to join</h2>
+      </div>
       <div className={css(styles.container)}>
         {listings.map(listing => (
           <ListingCard
@@ -61,6 +63,10 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     position: 'relative',
     width: '100%',
+  },
+  header: {
+    position: 'relative',
+    padding: '24px 0px',
   },
   wrapper: {
     display: 'flex',
