@@ -24,7 +24,7 @@ export default function ChatMessage({ message, isSelf }) {
       <div className={css(...bubbleStyles)}>
         <div>{message.text}</div>
         <div className={css(...dateStyles)}>
-          <TimeAgo date={message.createdAt} />
+          <TimeAgo date={message.createdAt} minPeriod={60} />
         </div>
       </div>
       {isSelf ?
