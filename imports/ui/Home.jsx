@@ -41,7 +41,10 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   header: {
-    background: 'transparent url(/images/hero.jpg) no-repeat center top',
+    background: `linear-gradient(
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+    ), url(/images/hero.jpg) no-repeat center top`,
     backgroundSize: 'cover',
     minHeight: 533,
     display: 'flex',

@@ -28,69 +28,80 @@ class StartForm extends Component {
   render() {
     const { numBeds } = this.state;
     return (
-      <form className={css(styles.container)} onSubmit={this._onSubmit}>
-        <div className={css(styles.stretchColumn)}>
-          <label className={css(styles.label)}>Where next?</label>
-          <div className={css(styles.input)}>
-            <input className={css(styles.location)} type="text" name="location" placeholder="Tokyo" />
+      <div className={css(styles.wrapper)}>
+        <form className={css(styles.container)} onSubmit={this._onSubmit}>
+          <div className={css(styles.column)}>
+            <label className={css(styles.label)}>Where next?</label>
+            <div className={css(styles.input)}>
+              <input
+                ref={this._setLocationRef}
+                className={css(styles.location)}
+                type="text"
+                name="location"
+                placeholder="Tokyo"
+              />
+            </div>
           </div>
-        </div>
-        <div className={css(styles.column)}>
-          <label className={css(styles.label)}>Check in</label>
-          <div className={css(styles.input)}>
-            <select className={css(styles.checkIn)} name="checkIn" value="July 1">
-              <option value="July 1">July 1</option>
-              <option value="July 2">July 2</option>
-              <option value="July 3">July 3</option>
-              <option value="July 4">July 4</option>
-              <option value="July 5">July 5</option>
-              <option value="July 6">July 6</option>
-              <option value="July 7">July 7</option>
-            </select>
+          <div className={css(styles.column)}>
+            <label className={css(styles.label)}>Check in</label>
+            <div className={css(styles.input)}>
+              <select className={css(styles.select, styles.checkIn)} name="checkIn">
+                <option value="July 1" selected>July 1</option>
+                <option value="July 2">July 2</option>
+                <option value="July 3">July 3</option>
+                <option value="July 4">July 4</option>
+                <option value="July 5">July 5</option>
+                <option value="July 6">July 6</option>
+                <option value="July 7">July 7</option>
+              </select>
+            </div>
           </div>
-        </div>
-        <div className={css(styles.column)}>
-          <div className={css(styles.divider)}>/</div>
-        </div>
-        <div className={css(styles.column)}>
-          <label className={css(styles.label)}>Check out</label>
-          <div className={css(styles.input)}>
-            <select className={css(styles.checkIn)} name="checkOut" value="July 6">
-              <option value="July 1">July 1</option>
-              <option value="July 2">July 2</option>
-              <option value="July 3">July 3</option>
-              <option value="July 4">July 4</option>
-              <option value="July 5">July 5</option>
-              <option value="July 6">July 6</option>
-              <option value="July 7">July 7</option>
-            </select>
+          <div className={css(styles.column, styles.divider)}><div>/</div></div>
+          <div className={css(styles.column)}>
+            <label className={css(styles.label)}>Check out</label>
+            <div className={css(styles.input)}>
+              <select className={css(styles.select, styles.checkOut)} name="checkOut">
+                <option value="July 1" selected>July 1</option>
+                <option value="July 2">July 2</option>
+                <option value="July 3">July 3</option>
+                <option value="July 4">July 4</option>
+                <option value="July 5">July 5</option>
+                <option value="July 6">July 6</option>
+                <option value="July 7">July 7</option>
+              </select>
+            </div>
           </div>
-        </div>
-        <div className={css(styles.column)}>
-          <label className={css(styles.label)}>How many beds?</label>
-          <div className={css(styles.input)}>
-            <select
-              className={css(styles.checkIn)}
-              name="checkOut"
-              value={numBeds}
-              onChange={this._onChangeNumBeds}
-            >
-              <option value={1}>1 Bed</option>
-              <option value={2}>2 Beds</option>
-              <option value={3}>3 Beds</option>
-              <option value={4}>4 Beds</option>
-              <option value={5}>5 Beds</option>
-              <option value={6}>6 Beds</option>
-            </select>
+          <div className={css(styles.column, styles.lpad)}>
+            <label className={css(styles.label)}>How many beds?</label>
+            <div className={css(styles.input)}>
+              <select
+                className={css(styles.select, styles.numBeds)}
+                name="checkOut"
+                value={numBeds}
+                onChange={this._onChangeNumBeds}
+              >
+                <option value={1} selected>1 Bed</option>
+                <option value={2}>2 Beds</option>
+                <option value={3}>3 Beds</option>
+                <option value={4}>4 Beds</option>
+                <option value={5}>5 Beds</option>
+                <option value={6}>6 Beds</option>
+              </select>
+            </div>
           </div>
-        </div>
-        <div className={css(styles.column)}>
-          <div className={css(styles.input)}>
-            <input type="submit" className={css(styles.button)} value="Join Pool" />
+          <div className={css(styles.column, styles.lpad, styles.tpad)}>
+            <div className={css(styles.input)}>
+              <input type="submit" className={css(styles.button)} value="Join Pool" />
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     );
+  }
+
+  _setLocationRef(ref) {
+    this._locationNode = ref && findDOMNode(ref);
+    this._locationNode && this._locationNode.focus();
   }
 
   _onChangeNumBeds(event) {
@@ -120,29 +131,65 @@ export default createContainer((props) => {
 }, StartForm);
 
 const styles = StyleSheet.create({
-  container: {
-    position: 'relative',
-    padding: '0 10px',
+  wrapper: {
+    width: '100%',
+    minWidth: 1060,
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'flex-end',
     justifyContent: 'center',
+  },
+  container: {
+    position: 'relative',
+    padding: '0 120px',
+    width: 1300,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 124,
   },
   column: {
     flexGrow: 0,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-end',
+    margin: '0 6px',
   },
-  columnStretch: {
-    flexGrow: 1,
-    display: 'flex',
-    flexDirection: 'column',
+  lpad: {
+    paddingLeft: 50,
+  },
+  tpad: {
+    paddingTop: 20,
+  },
+  divider: {
+    justifyContent: 'center',
+    height: 100,
+    margin: '0 26px',
+    fontSize: 26,
+    color: 'rgba(72, 72, 72, 0.3)',
+    paddingTop: 20,
   },
   label: {
     flexGrow: 0,
-    textTransform: 'capitalize',
+    textTransform: 'uppercase',
     display: 'block',
+    fontFamily: 'Circular Bold',
+    color: 'rgb(72, 72, 72)',
+    fontSize: 13,
+    whiteSpace: 'nowrap',
+  },
+  input: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    height: 60,
+  },
+  select: {
+    border: 'none',
+    backgroundColor: 'transparent',
+    fontSize: 22,
+    fontWeight: 300,
+    color: 'rgb(136, 136, 136)',
   },
   location: {
     flexGrow: 0,
@@ -150,15 +197,24 @@ const styles = StyleSheet.create({
     margin: 0,
     border: 0,
     outline: 0,
-    fontSize: 14,
+    fontSize: 22,
+    fontWeight: 300,
+    color: 'rgb(136, 136, 136)',
   },
   button: {
     flexGrow: 0,
     display: 'inline-block',
-    position: 'absolute',
-    right: 12,
-    top: 6,
-    color: 'rgb(4, 157, 145)',
-    'text-decoration': 'none',
+    color: 'white',
+    backgroundColor: 'rgb(255, 88, 91)',
+    textDecoration: 'none',
+    border: 0,
+    borderRadius: 64,
+    fontSize: 18,
+    fontWeight: 300,
+    width: 126,
+    height: 48,
+    textAlign: 'center',
+    cursor: 'pointer',
+    outline: 'none',
   },
 });
