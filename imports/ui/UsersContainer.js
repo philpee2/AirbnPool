@@ -11,6 +11,7 @@ const propTypes = {
 };
 
 export default function UsersContainer({ users, numBeds }) {
+  const remains = 8 - sum(numBeds);
   return (
     <div className={css(styles.container)}>
       { (remains > 0) &&
