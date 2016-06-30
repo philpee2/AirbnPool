@@ -23,6 +23,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     position: 'relative',
-    margin: 12,
+    marginBottom: 12,
   },
 });

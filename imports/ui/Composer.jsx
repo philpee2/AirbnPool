@@ -125,15 +125,17 @@ const styles = StyleSheet.create({
     height: 30,
     padding: '0 40px 0 0',
     margin: 0,
+    fontSize: 18,
     border: 0,
     outline: 0,
-    'font-size': 14,
   },
   button: {
     display: 'inline-block',
     position: 'absolute',
     right: 12,
     top: 6,
+    fontSize: 18,
+    fontFamily: 'Circular Medium',
     color: 'rgb(4, 157, 145)',
     'text-decoration': 'none',
   }
