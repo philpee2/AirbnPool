@@ -3,7 +3,7 @@ import { StyleSheet, css } from 'aphrodite';
 
 import ListingCard from './ListingCard';
 import { CAN_VOTE, DID_VOTE, CANNOT_VOTE } from './constants/voting_status_constants';
-import { sumBy, sortBy } from 'lodash';
+import { sumBy } from 'lodash';
 
 const propTypes = {
   listings: PropTypes.array.isRequired,
@@ -54,10 +54,13 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     position: 'relative',
     width: '100%',
+    overflow: 'scroll',
+    maxHeight: '100%',
   },
   header: {
     position: 'relative',
     padding: '24px 0px',
+    height: 75
   },
   wrapper: {
     display: 'flex',

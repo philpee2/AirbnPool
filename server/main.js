@@ -7,12 +7,9 @@ import { Messages } from '../imports/api/messages/messages';
 import '../imports/startup/server';
 
 Meteor.startup(() => {
-  // setup Groups
-  //
   Listings.remove({});
   Groups.remove({});
   ListingGroups.remove({});
-  Messages.remove({});
 
   Listings.insert({
     _id: '1',
