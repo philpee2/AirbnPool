@@ -33,4 +33,9 @@ Meteor.methods({
     const text = `${name} voted for ${listingName}!`;
     Meteor.call('messages.announce', text, groupId);
   },
+
+  'messages.winningListing'(listingName, groupId) {
+    const text = `${listingName} has won the most votes! Enjoy your trip!`;
+    Meteor.call('messages.announce', text, groupId);
+  },
 });
