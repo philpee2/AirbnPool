@@ -22,15 +22,6 @@ function getVotingStatus(listingId, currentUserVotes) {
   }
 }
 
-function getVotesValue(votes) {
-  return sumBy(votes, vote => vote.value());
-}
-
-function getListingVotesValue(votes, listingId) {
-  const votesForListing = votes.filter(vote => vote.listingId === listingId);
-  return getVotesValue(votesForListing);
-}
-
 export default function ListingsContainer({
   listings,
   onListingVote,
@@ -47,7 +38,7 @@ export default function ListingsContainer({
           <ListingCard
             key={listing._id}
             listing={listing}
-            numVotes={getListingVotesValue(allVotes, listing._id)}
+            numVotes={listing.voteCount || 0}
             onVote={() => onListingVote(listing._id)}
             votingStatus={getVotingStatus(listing._id, currentUserVotes)}
           />

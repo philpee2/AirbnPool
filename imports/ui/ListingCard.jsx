@@ -26,8 +26,9 @@ export default function ListingCard({ listing, onVote, votingStatus, numVotes })
     type,
   } = listing;
   const reviewsCount = 5;
+  const order = 10000 - (numVotes * 10);
   return (
-    <div className={css(styles.container)}>
+    <div className={css(styles.container)} style={{order}}>
       <div className={css(styles.header)}>
         <img
           className={css(styles.image)}
@@ -78,6 +79,7 @@ const styles = StyleSheet.create({
     width: '100%',
     marginBottom: 12,
     border: '1px solid #dce0e0',
+    transition: 'order 250ms ease',
   },
   footer: {
     display: 'flex',

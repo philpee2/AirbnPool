@@ -22,6 +22,7 @@ Meteor.startup(() => {
     reviews: '11',
     title: 'Spacious & Sunny Loft in the Pearl',
     type: 'Shared room',
+    voteCount: 0,
   });
   Listings.insert({
     _id: '2',
@@ -31,6 +32,7 @@ Meteor.startup(() => {
     reviews: '6',
     title: 'Quiet Tatami room with garden view',
     type: 'Entire home/apt',
+    voteCount: 0,
   });
   Groups.insert({ _id: '1' });
   ListingGroups.insert({ groupId: '1', listingId: '1' });
