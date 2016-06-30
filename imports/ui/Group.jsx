@@ -114,8 +114,8 @@ const styles = StyleSheet.create({
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
-    flex: 1,
     boxSizing: 'border-box',
+    width: 320,
   },
   expand: {
     flex: 2,

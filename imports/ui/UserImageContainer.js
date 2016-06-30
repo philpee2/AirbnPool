@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     position: 'relative',
     display: 'inline-block',
     justifyContent: 'flex-end',
-    margin: 10,
+    margin: 5,
     verticalAlign: 'middle',
   },
   image: {
