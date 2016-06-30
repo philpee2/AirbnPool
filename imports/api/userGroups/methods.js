@@ -2,11 +2,11 @@ import { Meteor } from 'meteor/meteor';
 import { UserGroups } from './userGroups';
 
 Meteor.methods({
-  'userGroups.joinGroup'(userId, groupId) {
+  'userGroups.joinGroup'(userId, groupId, numBeds = 1) {
     if (!UserGroups.findOne({ userId, groupId })) {
       UserGroups.insert({
-        numBeds: 1,
         createdAt: new Date(),
+        numBeds,
         groupId,
         userId,
       });
