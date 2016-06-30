@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
 import { StyleSheet, css } from 'aphrodite';
+import { createContainer } from 'meteor/react-meteor-data';
+import { Meteor } from 'meteor/meteor';
 
 const propTypes = {
 };
@@ -8,10 +10,13 @@ const propTypes = {
 class StartForm extends Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { text: '' };
+    this.state = {
+      text: '',
+      numBeds: 1,
+    };
 
     this._onSubmit = this._onSubmit.bind(this);
-    this._onClick = this._onClick.bind(this);
+    this._onChangeNumBeds = this._onChangeNumBeds.bind(this);
   }
 
   componentDidUpdate(oldProps) {
@@ -21,6 +26,7 @@ class StartForm extends Component {
   }
 
   render() {
+    const { numBeds } = this.state;
     return (
       <form className={css(styles.container)} onSubmit={this._onSubmit}>
         <div className={css(styles.stretchColumn)}>
@@ -63,41 +69,55 @@ class StartForm extends Component {
         <div className={css(styles.column)}>
           <label className={css(styles.label)}>How many beds?</label>
           <div className={css(styles.input)}>
-            <select className={css(styles.checkIn)} name="checkOut" value="1 Bed">
-              <option value="1 Bed">1 Bed</option>
-              <option value="2 Bed">2 Bed</option>
-              <option value="3 Bed">3 Bed</option>
-              <option value="4 Bed">4 Bed</option>
-              <option value="5 Bed">5 Bed</option>
-              <option value="6 Bed">6 Bed</option>
-              <option value="7 Bed">7 Bed</option>
-              <option value="8 Bed">8 Bed</option>
-              <option value="9 Bed">9 Bed</option>
-              <option value="10 Bed">10 Bed</option>
+            <select
+              className={css(styles.checkIn)}
+              name="checkOut"
+              value={numBeds}
+              onChange={this._onChangeNumBeds}
+            >
+              <option value={1}>1 Bed</option>
+              <option value={2}>2 Beds</option>
+              <option value={3}>3 Beds</option>
+              <option value={4}>4 Beds</option>
+              <option value={5}>5 Beds</option>
+              <option value={6}>6 Beds</option>
             </select>
           </div>
         </div>
         <div className={css(styles.column)}>
           <div className={css(styles.input)}>
-            <a href="/groups/1" className={css(styles.button)}>Join Pool</a>
+            <input type="submit" className={css(styles.button)} value="Join Pool" />
           </div>
         </div>
       </form>
     );
   }
 
-  _onSubmit(event) {
-    event.preventDefault();
+  _onChangeNumBeds(event) {
+    this.setState({ numBeds: Number(event.target.value) });
   }
 
-  _onClick(event) {
+  _onSubmit(event) {
+    event.preventDefault();
 
+    const groupId = '1';
+
+    this.props.submitForm(groupId, this.state.numBeds);
+    this.context.router.push(`/groups/${groupId}`);
   }
 }
 
 StartForm.propTypes = propTypes;
+StartForm.contextTypes = {
+  router: PropTypes.object,
+};
 
-export default StartForm;
+export default createContainer((props) => {
+  const userId = Meteor.userId();
+  return {
+    submitForm: (groupId, numBeds) => Meteor.call('userGroups.joinGroup', userId, groupId, numBeds),
+  };
+}, StartForm);
 
 const styles = StyleSheet.create({
   container: {
