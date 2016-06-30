@@ -18,6 +18,7 @@ const propTypes = {
 
 export default function ListingCard({ listing, onVote, votingStatus, numVotes }) {
   const {
+    hostImage,
     location,
     preview,
     price,
@@ -59,7 +60,7 @@ export default function ListingCard({ listing, onVote, votingStatus, numVotes })
         <div className={css(styles.profile)}>
           <img
             className={css(styles.user)}
-            src="https://avatars1.githubusercontent.com/u/2244653?v=3&s=460"
+            src={hostImage}
           />
         </div>
         <ListingBallot
