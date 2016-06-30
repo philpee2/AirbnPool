@@ -14,6 +14,7 @@ const propTypes = {
   }).isRequired,
   messages: PropTypes.arrayOf(PropTypes.object).isRequired,
   group: PropTypes.object,
+  totalUsers: PropTypes.number.isRequired,
   users: PropTypes.arrayOf(PropTypes.object).isRequired,
   listings: PropTypes.arrayOf(PropTypes.object).isRequired,
   isLoading: PropTypes.bool,
@@ -34,6 +35,7 @@ class Group extends Component {
       isLoading,
       params,
       messages,
+      totalUsers,
       users,
       onListingVote,
       allVotes,
@@ -50,6 +52,9 @@ class Group extends Component {
             <div className={css(styles.col)}>
               <h1>Airbnb Pool</h1>
               <h4>Trip to Tokyo, June 2nd to June 6th</h4>
+            </div>
+            <div className={css(styles.col)}>
+              <h4>{totalUsers} Guests Viewing</h4>
             </div>
           </div>
           <div className={css(styles.row, styles.expand)}>
@@ -130,13 +135,13 @@ export default createContainer((props) => {
   const isLoading = !groupHandle.ready();
   const group = Groups.findOne(groupId);
   const messages = isLoading ? [] : group.messages().fetch();
-  const users = isLoading ? [] : group.users().fetch();
+  const totalUsers = isLoading ? [] : group.users().fetch();
   const userGroups = isLoading ? [] : group.userGroups().fetch();
   const listings = isLoading ? [] : group.listings().fetch();
   const allVotes = isLoading ? [] : group.allVotes().fetch();
   const currentUserVotes = isLoading ? [] : group.votesForUser(Meteor.userId()).fetch();
 
-  const usersWhoVoted = users.filter(user => {
+  const usersWhoVoted = totalUsers.filter(user => {
     return !!(allVotes.find(vote => vote.userId === user._id));
   });
   const userData = usersWhoVoted.map(user => {
@@ -147,6 +152,7 @@ export default createContainer((props) => {
     messages,
     isLoading,
     group,
+    totalUsers: totalUsers.length,
     users: userData,
     listings,
     allVotes,
