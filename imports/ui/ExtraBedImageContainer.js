@@ -4,10 +4,9 @@ import { StyleSheet, css } from 'aphrodite';
 export default function ExtraBedImageContainer() {
   return (
     <div className={css(styles.imageContainer)}>
-      <img
-        className={css(styles.image)}
-        src="https://pbs.twimg.com/profile_images/698006458902958080/qwbpQ5PD_400x400.jpg"
-      />
+      <div className={css(styles.image)}>
+        +1
+      </div>
     </div>
   );
 }
@@ -18,11 +17,16 @@ const styles = StyleSheet.create({
     display: 'inline-block',
     justifyContent: 'flex-end',
     margin: 10,
+    backgroundColor: 'rgb(4, 157, 145)',
+    color: 'white',
+    borderRadius: '50%',
+    textAlign: 'center',
   },
   image: {
     width: 50,
     height: 50,
-    borderRadius: '50%',
-    border: '1px solid black',
+    paddingTop: 15,
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });

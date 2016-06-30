@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
     display: 'inline-block',
     justifyContent: 'flex-end',
     margin: 10,
+    verticalAlign: 'middle',
   },
   image: {
     width: 50,
