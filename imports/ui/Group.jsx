@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import Header from './Header';
 import ChatContainer from './ChatContainer';
 import ListingsContainer from './ListingsContainer';
 import UsersContainer from './UsersContainer';
@@ -43,31 +44,34 @@ class Group extends Component {
     } = this.props;
     const { groupId } = params;
     return (
-      <div className={css(styles.page)}>
-        <div className={css(styles.row)}>
-          <div className={css(styles.col)}>
-            <h1>Airbnb Pool</h1>
-            <h4>Trip to Tokyo, June 2nd to June 6th</h4>
+      <div className={css(styles.pageContainer)}>
+        <Header />
+        <div className={css(styles.page)}>
+          <div className={css(styles.row)}>
+            <div className={css(styles.col)}>
+              <h1>Airbnb Pool</h1>
+              <h4>Trip to Tokyo, June 2nd to June 6th</h4>
+            </div>
           </div>
-        </div>
-        <div className={css(styles.row)}>
-          <UsersContainer users={users} numBeds={numBeds} />
-        </div>
-        <div className={css(styles.row)}>
-          <div className={css(styles.col)}>
-            <ChatContainer
-              messages={messages}
-              createMessage={(text) => createMessage(text, groupId)}
-              isLoading={isLoading}
-            />
+          <div className={css(styles.row)}>
+            <UsersContainer users={users} numBeds={numBeds} />
           </div>
-          <div className={css(styles.col, styles.padding)}>
-            <ListingsContainer
-              listings={listings}
-              onListingVote={onListingVote}
-              allVotes={allVotes}
-              currentUserVotes={currentUserVotes}
-            />
+          <div className={css(styles.row)}>
+            <div className={css(styles.col)}>
+              <ChatContainer
+                messages={messages}
+                createMessage={(text) => createMessage(text, groupId)}
+                isLoading={isLoading}
+              />
+            </div>
+            <div className={css(styles.col, styles.padding)}>
+              <ListingsContainer
+                listings={listings}
+                onListingVote={onListingVote}
+                allVotes={allVotes}
+                currentUserVotes={currentUserVotes}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -87,6 +91,9 @@ const styles = StyleSheet.create({
   },
   padding: {
     paddingLeft: 12,
+  },
+  pageContainer: {
+    width: '100%',
   },
   page: {
     position: 'relative',

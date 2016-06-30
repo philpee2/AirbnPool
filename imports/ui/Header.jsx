@@ -21,5 +21,6 @@ const styles = StyleSheet.create({
     width: '100%',
     padding: 18,
     borderBottom: '1px solid #dce0e0',
+    marginBottom: 48,
   },
 });
