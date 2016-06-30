@@ -10,6 +10,9 @@ Meteor.methods({
         groupId,
         userId,
       });
+
+      const userName = Meteor.users.findOne(userId).name();
+      Meteor.call('messages.userJoined', userName, groupId);
     }
   },
 

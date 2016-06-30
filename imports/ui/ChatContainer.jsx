@@ -4,8 +4,7 @@ import { StyleSheet, css } from 'aphrodite';
 import OtherChatMessage from './OtherChatMessage';
 import ListingCard from './ListingCard';
 import Composer from './Composer';
-import OtherChatMessages from './OtherChatMessages';
-import SelfChatMessages from './SelfChatMessages';
+import ChatMessagesBlock from './ChatMessagesBlock';
 
 const propTypes = {
   messages: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -53,9 +52,11 @@ export default class ChatContainer extends Component {
         <div className={css(styles.container)} ref={'scrollable'}>
           <div className={css(styles.messages)}>
             {blocks.map(block =>
-              block[0].userId === currentUserId ?
-              <SelfChatMessages key={block[0]._id} messages={block} /> :
-              <OtherChatMessages key={block[0]._id} messages={block} />
+              <ChatMessagesBlock
+                key={block[0]._id}
+                messages={block}
+                currentUserId={currentUserId}
+              />
             )}
           </div>
 

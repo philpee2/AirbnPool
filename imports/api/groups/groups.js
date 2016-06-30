@@ -43,6 +43,9 @@ Groups.helpers({
 // Hardcoded for hackathon YOLO
 Meteor.users.helpers({
   picture() {
+    if (this._id === 'announcer') {
+      return 'http://www.bladecreativebranding.com/blog/wp-content/uploads/2014/11/New-2014-Air-Bnb-Logo.png';
+    }
     switch(this.emails[0].address) {
       // Images come from here https://github.com/philpee2/AirbnPool/issues/21
       case 'phil.nachum@airbnb.com':
@@ -56,8 +59,27 @@ Meteor.users.helpers({
       case 'poyan.pourshian@airbnb.com':
         return 'https://a2.muscache.com/ac/pictures/ff143fed-123a-4ee7-a18d-6ad471df04ad.jpg?interpolation=lanczos-none&size=large&output-format=jpg&output-quality=70';
       default:
-        // Airbnb logo
-        return 'http://www.doz.com/cms/wp-content/uploads/2015/03/airbnb-logo.png';
+        return "http://cdn.patch.com/assets/layout/contribute/user-default.png";
     }
-  }
-})
+  },
+
+  name() {
+    if (this._id === 'announcer') {
+      return 'Bot';
+    }
+    switch(this.emails[0].address) {
+      case 'phil.nachum@airbnb.com':
+        return 'Phil';
+      case 'michael.lawlor@airbnb.com':
+        return 'Michael';
+      case 'warren.shen@airbnb.com':
+        return 'Warren';
+      case 'sherry.huang@airbnb.com':
+        return 'Sherry';
+      case 'poyan.pourshian@airbnb.com':
+        return 'Poyan';
+      default:
+        return 'Guest';
+    }
+  },
+});
