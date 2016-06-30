@@ -54,10 +54,13 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     position: 'relative',
     width: '100%',
+    overflow: 'scroll',
+    maxHeight: '100%',
   },
   header: {
     position: 'relative',
     padding: '24px 0px',
+    height: 75
   },
   wrapper: {
     display: 'flex',
