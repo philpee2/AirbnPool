@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Votes } from './votes';
+import { Listings } from '../listings/listings';
 
 Meteor.methods({
   'votes.create'(listingId, groupId) {
@@ -14,5 +15,8 @@ Meteor.methods({
       userId,
       createdAt: new Date(),
     });
+    const listingName = Listings.findOne(listingId).title;
+
+    Meteor.call('messages.userVoted', Meteor.user().name(), listingName, groupId);
   }
 });

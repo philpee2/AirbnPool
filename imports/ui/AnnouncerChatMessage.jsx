@@ -3,14 +3,19 @@ import { StyleSheet, css } from 'aphrodite';
 import TimeAgo from 'react-timeago';
 
 const propTypes = {
-  isLast: PropTypes.bool.isRequired,
   message: PropTypes.object.isRequired,
 };
 
-export default function OtherChatMessage({ isLast, message }) {
+export default function AnnouncerChatMessage({ message }) {
   return (
     <div className={css(styles.container)}>
       <div className={css(styles.bubble)}>
+        <div className={css(styles.profile)}>
+          <img
+            className={css(styles.image)}
+            src={message.author().picture()}
+          />
+        </div>
         <span className={css(styles.content)}>
           {message.text}
         </span>
@@ -18,28 +23,11 @@ export default function OtherChatMessage({ isLast, message }) {
           <TimeAgo date={message.createdAt} minPeriod={60} />
         </div>
       </div>
-      {isLast && (
-        <div className={css(styles.arrow)}>
-          <img
-            src={'/images/white-chat-tail.png'}
-            width={8}
-          />
-        </div>
-      )}
-      {isLast && (
-        <div className={css(styles.profile)}>
-          <img
-            className={css(styles.image)}
-            src={message.author().picture()}
-          />
-        </div>
-      )}
-      {!isLast && <div className={css(styles.placeholder)}></div>}
     </div>
   );
 }
 
-OtherChatMessage.propTypes = propTypes;
+AnnouncerChatMessage.propTypes = propTypes;
 
 const styles = StyleSheet.create({
   arrow: {
@@ -54,9 +42,9 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 12,
     marginTop: 3,
-    border: '1px solid rgb(242, 242, 242)',
+    border: '2px solid rgb(242, 242, 242)',
     borderRadius: 5,
-    background: 'rgb(242, 242, 242)',
+    background: 'white',
     borderBottomRightRadius: 5,
     borderBottomLeftRadius: 0,
   },
@@ -95,3 +83,6 @@ const styles = StyleSheet.create({
     flexGrow: 0,
   },
 });
+
+
+AnnouncerChatMessage.propTypes = propTypes;

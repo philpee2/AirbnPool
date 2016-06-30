@@ -31,6 +31,11 @@ if (Meteor.isServer) {
         find(group) {
           return group.allVotes();
         }
+      }, {
+        // TODO: This shouldn't need to be in the group publication
+        find(group) {
+          return Meteor.users.find('announcer');
+        }
       }],
     };
   });
