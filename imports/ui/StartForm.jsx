@@ -45,8 +45,12 @@ class StartForm extends Component {
           <div className={css(styles.column)}>
             <label className={css(styles.label)}>Check in</label>
             <div className={css(styles.input)}>
-              <select className={css(styles.select, styles.checkIn)} name="checkIn">
-                <option value="July 1" selected>July 1</option>
+              <select
+                className={css(styles.select, styles.checkIn)}
+                name="checkIn"
+                defaultValue="July 1"
+              >
+                <option value="July 1">July 1</option>
                 <option value="July 2">July 2</option>
                 <option value="July 3">July 3</option>
                 <option value="July 4">July 4</option>
@@ -60,8 +64,12 @@ class StartForm extends Component {
           <div className={css(styles.column)}>
             <label className={css(styles.label)}>Check out</label>
             <div className={css(styles.input)}>
-              <select className={css(styles.select, styles.checkOut)} name="checkOut">
-                <option value="July 1" selected>July 1</option>
+              <select
+                className={css(styles.select, styles.checkOut)}
+                name="checkOut"
+                defaultValue="July 6"
+              >
+                <option value="July 1">July 1</option>
                 <option value="July 2">July 2</option>
                 <option value="July 3">July 3</option>
                 <option value="July 4">July 4</option>
@@ -80,7 +88,7 @@ class StartForm extends Component {
                 value={numBeds}
                 onChange={this._onChangeNumBeds}
               >
-                <option value={1} selected>1 Bed</option>
+                <option value={1}>1 Bed</option>
                 <option value={2}>2 Beds</option>
                 <option value={3}>3 Beds</option>
                 <option value={4}>4 Beds</option>

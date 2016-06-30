@@ -10,6 +10,7 @@ const propTypes = {
   allVotes: PropTypes.arrayOf(PropTypes.object).isRequired,
   currentUserVotes: PropTypes.arrayOf(PropTypes.object).isRequired,
   groupId: PropTypes.string.isRequired,
+  winningListing: PropTypes.object,
 };
 
 function getVotingStatus(listingId, currentUserVotes) {
@@ -28,6 +29,7 @@ export default function ListingsContainer({
   allVotes,
   currentUserVotes,
   groupId,
+  winningListing,
 }) {
   console.log(listings);
   return (
@@ -43,6 +45,7 @@ export default function ListingsContainer({
             numVotes={listing.votesValueInGroup(groupId) || 0}
             onVote={() => onListingVote(listing._id)}
             votingStatus={getVotingStatus(listing._id, currentUserVotes)}
+            disabled={!!winningListing ? listing._id !== winningListing._id : false}
           />
         ))}
       </div>

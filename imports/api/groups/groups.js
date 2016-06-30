@@ -4,6 +4,7 @@ import { UserGroups } from '../userGroups/userGroups';
 import { ListingGroups } from '../listingGroups/listingGroups';
 import { Listings } from '../listings/listings';
 import { Votes } from '../votes/votes';
+import { sum } from 'lodash';
 
 export const Groups = new Mongo.Collection('groups');
 
@@ -38,6 +39,19 @@ Groups.helpers({
   votesForUser(userId) {
     return Votes.find({ groupId: this._id, userId });
   },
+
+  winningListing() {
+    const listings = this.listings();
+    const listingVotes = listings.map(listing => listing.votesValueInGroup(this._id));
+    const totalVotes = sum(listingVotes);
+    if (totalVotes === 8) {
+      const maxVotes = Math.max(...listingVotes);
+      const indexOfMaxVotes = listingVotes.indexOf(maxVotes);
+      return listings.fetch()[indexOfMaxVotes];
+    } else {
+      return null;
+    }
+  }
 });
 
 // Hardcoded for hackathon YOLO
