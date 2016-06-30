@@ -8,6 +8,8 @@ const propTypes = {
   listing: PropTypes.shape({
     _id: PropTypes.string.isRequired,
     location: PropTypes.string.isRequired,
+    reviews: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
   }),
   onVote: PropTypes.func.isRequired,
   numVotes: PropTypes.number.isRequired,
@@ -15,18 +17,25 @@ const propTypes = {
 };
 
 export default function ListingCard({ listing, onVote, votingStatus, numVotes }) {
-  const title = 'Boutique Retreat Bedroom';
+  const {
+    location,
+    preview,
+    price,
+    reviews,
+    title,
+    type,
+  } = listing;
   const reviewsCount = 5;
   return (
     <div className={css(styles.container)}>
       <div className={css(styles.header)}>
         <img
           className={css(styles.image)}
-          src="https://a2.muscache.com/im/pictures/97759166/422a22ef_original.jpg?aki_policy=x_medium"
+          src={preview}
         />
         <div className={css(styles.pricing)}>
           <h3 className={css(styles.price)}>
-            {'$100'}
+            {price}
           </h3>
           <h3 className={css(styles.price)}>
             {': IB'}
@@ -40,9 +49,9 @@ export default function ListingCard({ listing, onVote, votingStatus, numVotes })
             {title}
           </h4>
           <div>
-            <span>Entire home/apt</span>
+            <span>{type}</span>
             <span className={css(styles.middot)}>·</span>
-            <span>{`${reviewsCount} reviews`}</span>
+            <span>{`${reviews} reviews`}</span>
           </div>
         </div>
 
