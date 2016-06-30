@@ -8,11 +8,18 @@ const propTypes = {
 export default function ExtraBedImageContainer({ user }) {
   return (
     <div className={css(styles.imageContainer)}>
-      <img
+      { (user._id == "1") &&
+          <img
+          className={css(styles.image)}
+          src="http://www.clker.com/cliparts/t/m/P/U/D/m/letter-s-purple-hi.png"
+          />
+      }
+      { (user._id == "2") &&
+        <img
         className={css(styles.image)}
-        src="http://www.clker.com/cliparts/t/m/P/U/D/m/letter-s-purple-hi.png"
-      />
-      {user.name} +1
+        src="http://www.activityvillage.co.uk/sites/default/files/images/autumn_letter_t_460_0.jpg"
+        />
+      }
     </div>
   );
 }
@@ -20,8 +27,7 @@ export default function ExtraBedImageContainer({ user }) {
 const styles = StyleSheet.create({
   imageContainer: {
     position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
+    display: 'inline-block',
     justifyContent: 'flex-end',
     margin: 10,
   },

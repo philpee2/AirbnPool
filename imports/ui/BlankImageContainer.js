@@ -26,8 +26,8 @@ export default function BlankImageContainer({ remains }) {
 const styles = StyleSheet.create({
   imageContainer: {
     position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
+    display: 'inline-block',
+    // flexDirection: 'column',
     justifyContent: 'flex-end',
   },
   image: {
