@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { StyleSheet, css } from 'aphrodite';
-import { CAN_VOTE, DID_VOTE, CANNOT_VOTE } from './constants/voting_status_constants';
+import { CAN_VOTE, DID_VOTE, CANNOT_VOTE, VOTING_OVER } from './constants/voting_status_constants';
 
 function VoteButton({ status, onClick }) {
   switch (status) {
@@ -26,6 +26,8 @@ function VoteButton({ status, onClick }) {
           />
         </div>
       );
+    case VOTING_OVER:
+      return null;
   }
 }
 

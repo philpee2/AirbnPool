@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 import ListingCard from './ListingCard';
-import { CAN_VOTE, DID_VOTE, CANNOT_VOTE } from './constants/voting_status_constants';
+import { CAN_VOTE, DID_VOTE, CANNOT_VOTE, VOTING_OVER } from './constants/voting_status_constants';
 
 const propTypes = {
   listings: PropTypes.array.isRequired,
@@ -13,8 +13,10 @@ const propTypes = {
   winningListing: PropTypes.object,
 };
 
-function getVotingStatus(listingId, currentUserVotes) {
-  if (currentUserVotes.length === 0) {
+function getVotingStatus(listingId, currentUserVotes, isVotingOver) {
+  if (isVotingOver) {
+    return VOTING_OVER;
+  } else if (currentUserVotes.length === 0) {
     return CAN_VOTE;
   } else if (currentUserVotes[0].listingId === listingId) {
     return DID_VOTE;
@@ -44,7 +46,7 @@ export default function ListingsContainer({
             listing={listing}
             numVotes={listing.votesValueInGroup(groupId) || 0}
             onVote={() => onListingVote(listing._id)}
-            votingStatus={getVotingStatus(listing._id, currentUserVotes)}
+            votingStatus={getVotingStatus(listing._id, currentUserVotes, !!winningListing)}
             disabled={!!winningListing ? listing._id !== winningListing._id : false}
           />
         ))}
