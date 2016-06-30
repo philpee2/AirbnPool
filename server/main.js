@@ -3,6 +3,7 @@ import { Mongo } from 'meteor/mongo';
 import { Listings } from '../imports/api/listings/listings';
 import { ListingGroups } from '../imports/api/listingGroups/listingGroups';
 import { Groups } from '../imports/api/groups/groups';
+import { Messages } from '../imports/api/messages/messages';
 import '../imports/startup/server';
 
 Meteor.startup(() => {
@@ -11,6 +12,7 @@ Meteor.startup(() => {
   Listings.remove({});
   Groups.remove({});
   ListingGroups.remove({});
+  Messages.remove({});
 
   Listings.insert({ _id: '1', location: '' });
   Listings.insert({ _id: '2', location: '' });
