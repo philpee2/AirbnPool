@@ -79,6 +79,7 @@ class Group extends Component {
                   onListingVote={onListingVote}
                   allVotes={allVotes}
                   currentUserVotes={currentUserVotes}
+                  groupId={groupId}
                 />
               </div>
             </div>

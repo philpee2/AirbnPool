@@ -3,13 +3,13 @@ import { StyleSheet, css } from 'aphrodite';
 
 import ListingCard from './ListingCard';
 import { CAN_VOTE, DID_VOTE, CANNOT_VOTE } from './constants/voting_status_constants';
-import { sumBy } from 'lodash';
 
 const propTypes = {
   listings: PropTypes.array.isRequired,
   onListingVote: PropTypes.func.isRequired,
   allVotes: PropTypes.arrayOf(PropTypes.object).isRequired,
   currentUserVotes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  groupId: PropTypes.string.isRequired,
 };
 
 function getVotingStatus(listingId, currentUserVotes) {
@@ -27,6 +27,7 @@ export default function ListingsContainer({
   onListingVote,
   allVotes,
   currentUserVotes,
+  groupId,
 }) {
   return (
     <div className={css(styles.wrapper)}>
@@ -38,7 +39,7 @@ export default function ListingsContainer({
           <ListingCard
             key={listing._id}
             listing={listing}
-            numVotes={listing.voteCount || 0}
+            numVotes={listing.votesValueInGroup(groupId) || 0}
             onVote={() => onListingVote(listing._id)}
             votingStatus={getVotingStatus(listing._id, currentUserVotes)}
           />
