@@ -11,7 +11,9 @@ export default function SelfChatMessage({ isLast, message }) {
   return (
     <div className={css(styles.container)}>
       <div className={css(styles.bubble)}>
-        <span>{message.text}</span>
+        <span className={css(styles.content)}>
+          {message.text}
+        </span>
         <div className={css(styles.date)}>
           <TimeAgo date={message.createdAt} minPeriod={60} />
         </div>
@@ -32,6 +34,7 @@ export default function SelfChatMessage({ isLast, message }) {
           />
         </div>
       )}
+      {!isLast && <div className={css(styles.placeholder)}></div>}
     </div>
   );
 }
@@ -39,43 +42,50 @@ export default function SelfChatMessage({ isLast, message }) {
 SelfChatMessage.propTypes = propTypes;
 
 const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
-    position: 'relative',
-  },
-  bubble: {
-    border: '1px solid rgb(242, 242, 242)',
-    borderRadius: 5,
-    padding: 8,
-    background: 'rgb(242, 242, 242)',
-    width: '80%',
-    display: 'inline-block',
-    flex: 1,
-    borderBottomRightRadius: 5,
-    borderBottomLeftRadius: 0,
-    backgroundColor: 'rgb(4, 157, 145)',
-    color: 'white',
-    borderBottomRightRadius: 0,
-    borderBottomLeftRadius: 5,
-  },
-  date: {
-    fontSize: 12,
-    marginTop: 4,
-    color: 'rgb(152, 152, 152)',
-    'font-weight': 'bold',
-    color: 'white',
-  },
   arrow: {
-    flexGrow: 0,
-    position: 'relative',
-    bottom: -5,
-    flexGrow: 0,
+    flex: 0,
     position: 'relative',
     bottom: -4,
     right: 1,
+  },
+  bubble: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+    flex: 1,
+    padding: 12,
+    color: '#ffffff',
+    border: '1px solid rgb(242, 242, 242)',
+    borderRadius: 5,
+    backgroundColor: 'rgb(4, 157, 145)',
+    borderBottomRightRadius: 0,
+    borderTopRightRadius: 0,
+  },
+  container: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    position: 'relative',
+  },
+  content: {
+    color: '#ffffff',
+    fontFamily: 'Circular Medium',
+    fontSize: 16,
+  },
+  date: {
+    position: 'relative',
+    marginTop: 4,
+    color: '#ffffff',
+    fontSize: 12,
+    fontWeight: 'bold',
+  },
+  image: {
+    width: 30,
+    height: 30,
+    borderRadius: '50%',
+  },
+  placeholder: {
+    width: 38,
   },
   profile: {
     position: 'relative',
@@ -83,10 +93,5 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-end',
     flexGrow: 0,
-  },
-  image: {
-    width: 30,
-    height: 30,
-    borderRadius: '50%',
   },
 });

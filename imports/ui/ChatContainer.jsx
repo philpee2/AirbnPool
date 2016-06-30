@@ -19,15 +19,15 @@ function generateBlocks(messages, id) {
     return blocks;
   }
   let currentBlock = [];
-  let currentBool = messages[0].author()._id === id;
+  let lastId = messages[0].author()._id;
   messages.map(message => {
-    const bool = message.author()._id === id;
-    if (bool === currentBool) {
+    const currentId = message.author()._id;
+    if (currentId === lastId) {
       currentBlock.push(message);
     } else {
       blocks.push(currentBlock);
       currentBlock = [message];
-      currentBool = !currentBool;
+      lastId = currentId;
     }
   });
   blocks.push(currentBlock);
