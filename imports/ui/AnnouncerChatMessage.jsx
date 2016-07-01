@@ -54,8 +54,10 @@ const styles = StyleSheet.create({
   },
   content: {
     color: 'rgb(152, 152, 152)',
-    fontFamily: 'Circular Medium',
-    fontSize: 16,
+    fontFamily: 'Circular Light',
+    fontSize: 19,
+    letterSpacing: '-0.21px',
+    lineHeight: '24px',
   },
   date: {
     position: 'relative',

@@ -60,8 +60,8 @@ class Group extends Component {
         <div className={css(styles.page)}>
           <div className={css(styles.header)}>
             <div className={css(styles.col, styles.expand)}>
-              <h1>Airbnb Pool</h1>
-              <h3>Trip to Edinburgh, June 2nd to June 6th</h3>
+              <h1 className={css(styles.mainTitle)}>Airbnb Pool</h1>
+              <h3 className={css(styles.subTitle)}>Trip to Edinburgh, June 2nd to June 6th</h3>
             </div>
             <div className={css(styles.viewers)}>
               <img
@@ -127,6 +127,18 @@ const styles = StyleSheet.create({
     position: 'relative',
     paddingBottom: 24,
     borderBottom: '1px solid #dce0e0',
+    height: 120,
+  },
+  mainTitle: {
+    fontFamily: 'Circular Bold',
+    fontSize: 44,
+    color: '#484848',
+    letterSpacing: '-0.92px',
+    lineHeight: '56px',
+  },
+  subTitle: {
+    fontFamily: 'Circular Light',
+    fontSize: 19,
   },
   image: {
     width: 30,

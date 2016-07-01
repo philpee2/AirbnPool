@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
   header: {
     position: 'relative',
     padding: '18px 0px',
+    height: 58,
   },
   wrapper: {
     display: 'flex',
