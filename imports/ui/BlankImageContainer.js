@@ -14,7 +14,7 @@ export default function BlankImageContainer({ remains }) {
           <div key={num} className={css(styles.imageContainer)}>
             <img
               className={css(styles.image)}
-              src="http://cdn.patch.com/assets/layout/contribute/user-default.png"
+              src="/images/avatar.png"
             />
           </div>
         );
@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: '50%',
-    border: '2px dashed #ececec',
     margin: 5,
+    border: '2px dashed #ececec',
   },
 });
 

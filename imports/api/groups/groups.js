@@ -73,7 +73,7 @@ Meteor.users.helpers({
       case 'poyan.pourshian@airbnb.com':
         return 'https://a2.muscache.com/ac/pictures/ff143fed-123a-4ee7-a18d-6ad471df04ad.jpg?interpolation=lanczos-none&size=large&output-format=jpg&output-quality=70';
       default:
-        return "http://cdn.patch.com/assets/layout/contribute/user-default.png";
+        return "/images/avatar.png";
     }
   },
 

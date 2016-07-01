@@ -66,7 +66,7 @@ class Group extends Component {
             <div className={css(styles.viewers)}>
               <img
                 className={css(styles.image)}
-                src={'http://icons.iconarchive.com/icons/custom-icon-design/silky-line-user/512/couple-icon.png'}
+                src={'/images/guestsIcon.png'}
               />
               <span>
                 {`${totalUsers} guest(s) viewing`}
